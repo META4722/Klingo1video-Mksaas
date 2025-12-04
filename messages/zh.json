@@ -1032,6 +1032,10 @@
       "description": "加入成千上万使用Seedream 4.5在几秒钟内生成令人惊叹的专业品质图像的创作者、设计师和企业。今天就免费开始。",
       "primaryButton": "免费开始创作",
       "secondaryButton": "查看画廊"
+    },
+    "showcase": {
+      "title": "Seedream 4.5 AI创作工作台",
+      "subtitle": "使用先进的AI技术将您的想象力转化为精美图像"
     }
   },
   "AITextPage": {

@@ -1032,6 +1032,10 @@
       "description": "Join thousands of creators, designers, and businesses using Seedream 4.5 to generate stunning, professional-quality images in seconds. Start free today.",
       "primaryButton": "Start Creating Free",
       "secondaryButton": "View Gallery"
+    },
+    "showcase": {
+      "title": "Seedream 4.5 AI Creation Workbench",
+      "subtitle": "Use advanced AI technology to transform your imagination into beautiful images"
     }
   },
   "AITextPage": {

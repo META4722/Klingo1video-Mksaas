@@ -1,7 +1,9 @@
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import FaqSection from '@/components/blocks/faqs/faqs';
+import FeaturesShowcase from '@/components/blocks/features/features-showcase';
 import HeroSection from '@/components/blocks/hero/hero';
 import PricingSection from '@/components/blocks/pricing/pricing';
+import AIWorkbenchShowcase from '@/components/blocks/showcase/ai-workbench';
 import CrispChat from '@/components/layout/crisp-chat';
 import { constructMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
@@ -40,6 +42,10 @@ export default async function HomePage(props: HomePageProps) {
     <>
       <div className="flex flex-col">
         <HeroSection />
+
+        <AIWorkbenchShowcase />
+
+        <FeaturesShowcase />
 
         <PricingSection />
 

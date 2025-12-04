@@ -52,6 +52,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'service.firecrawl.dev',
       },
+      {
+        protocol: 'https',
+        hostname: 'assets.seedream45.org',
+      },
     ],
   },
 };
