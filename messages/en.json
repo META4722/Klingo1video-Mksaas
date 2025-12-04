@@ -495,6 +495,25 @@
     "dashboard": {
       "title": "Dashboard"
     },
+    "cards": {
+      "currentCredits": {
+        "title": "Current Credits",
+        "description": "Available credit balance"
+      },
+      "expiringSoon": {
+        "title": "Expiring Soon",
+        "description": "Credits expiring within 30 days"
+      },
+      "monthlyUsage": {
+        "title": "Monthly Usage",
+        "description": "Credits used this month"
+      },
+      "subscriptionStatus": {
+        "title": "Subscription Status",
+        "unsubscribed": "Unsubscribed",
+        "description": "No active subscription"
+      }
+    },
     "admin": {
       "title": "Admin",
       "users": {

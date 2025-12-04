@@ -495,6 +495,25 @@
     "dashboard": {
       "title": "仪表盘"
     },
+    "cards": {
+      "currentCredits": {
+        "title": "当前积分",
+        "description": "可用积分余额"
+      },
+      "expiringSoon": {
+        "title": "即将过期",
+        "description": "30天内到期的积分"
+      },
+      "monthlyUsage": {
+        "title": "本月使用",
+        "description": "本月已使用的积分"
+      },
+      "subscriptionStatus": {
+        "title": "订阅状态",
+        "unsubscribed": "未订阅",
+        "description": "无活跃订阅"
+      }
+    },
     "admin": {
       "title": "系统管理",
       "users": {
