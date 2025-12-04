@@ -143,10 +143,10 @@
   },
   "AboutPage": {
     "title": "About Seedream 4.5",
-    "description": "Seedream 4.5 is an advanced AI-powered platform for image generation and editing, built with cutting-edge technology to help creators bring their visual ideas to life.",
+    "description": "Seedream 4.5 is ByteDance's latest iteration of advanced AI image generation and editing model, released on December 3, 2025. It represents a major upgrade focusing on professional-grade tools for creators, designers, and marketers.",
     "authorName": "Seedream 4.5",
-    "authorBio": "AI Image Generation & Editing Platform",
-    "introduction": "👋 Welcome to Seedream 4.5! We're an AI-powered image generation and editing platform built with modern technologies. Whether you're creating new images from scratch or editing existing ones, our tools help you achieve professional results effortlessly.",
+    "authorBio": "AI Image Generation & Editing by ByteDance",
+    "introduction": "Seedream 4.5 is the latest iteration of ByteDance's (the company behind TikTok) advanced AI image generation and editing model. It integrates text-to-image generation and image editing into a unified system, emphasizing cinematic realism, precise prompt adherence, and high-fidelity outputs suitable for production workflows.",
     "talkWithMe": "Contact us",
     "followMe": "Follow us"
   },
@@ -790,248 +790,248 @@
   },
   "HomePage": {
     "title": "Seedream 4.5",
-    "description": "Create and edit stunning images with AI-powered generation and editing tools",
+    "description": "Advanced AI image generation and editing model by ByteDance",
     "hero": {
-      "title": "Create Stunning Images with AI-Powered Tools",
-      "description": "Seedream 4.5 combines powerful AI image generation with professional editing capabilities. Generate high-fidelity images, maintain character consistency, and create sharp typography with ease.",
-      "introduction": "Introducing Seedream 4.5",
-      "primary": "Get Started",
-      "secondary": "See Demo"
+      "title": "Create Stunning Images with AI-Powered Precision",
+      "description": "Seedream 4.5 brings professional-grade AI image generation to your fingertips. Generate photorealistic images, edit with pixel-perfect control, and bring your creative vision to life with cinematic quality outputs up to 4K resolution.",
+      "introduction": "Powered by ByteDance AI",
+      "primary": "Start Creating Free",
+      "secondary": "View Examples"
     },
     "logocloud": {
-      "title": "Your favorite companies are our partners"
+      "title": "Trusted by creators and professionals worldwide"
     },
     "integration": {
-      "title": "Integrations",
-      "subtitle": "Integrate with your favorite tools",
-      "description": "Connect seamlessly with popular platforms and services to enhance your workflow.",
-      "learnMore": "Learn More",
+      "title": "Seamless Creative Workflow",
+      "subtitle": "Works with your favorite tools",
+      "description": "Export to any format and integrate Seedream 4.5 into your existing creative pipeline.",
+      "learnMore": "Explore Integrations",
       "items": {
         "item-1": {
-          "title": "Google Gemini",
-          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+          "title": "Adobe Creative Suite",
+          "description": "Export directly to Photoshop, Illustrator, and other Adobe apps for advanced editing."
         },
         "item-2": {
-          "title": "Replit",
-          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+          "title": "Figma & Sketch",
+          "description": "Seamlessly integrate AI-generated assets into your design workflow."
         },
         "item-3": {
-          "title": "MagicUI",
-          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+          "title": "Canva",
+          "description": "Use AI-generated images directly in your Canva designs and presentations."
         },
         "item-4": {
-          "title": "VSCodium",
-          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+          "title": "Social Media Platforms",
+          "description": "Optimize and export images for Instagram, TikTok, and other social channels."
         },
         "item-5": {
-          "title": "MediaWiki",
-          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+          "title": "Content Management",
+          "description": "Direct integration with WordPress, Webflow, and major CMS platforms."
         },
         "item-6": {
-          "title": "Google PaLM",
-          "description": "Amet praesentium deserunt ex commodi tempore fuga voluptatem."
+          "title": "Cloud Storage",
+          "description": "Sync with Dropbox, Google Drive, and cloud storage services automatically."
         }
       }
     },
     "integration2": {
-      "title": "Integrate with your favorite tools",
-      "description": "Connect seamlessly with popular platforms and services to enhance your workflow.",
-      "primaryButton": "Get Started",
-      "secondaryButton": "See Demo"
+      "title": "Built for Professional Workflows",
+      "description": "From solo creators to enterprise teams, Seedream 4.5 scales with your needs. Export in any format, collaborate in real-time, and maintain brand consistency across all your visual content.",
+      "primaryButton": "Try It Free",
+      "secondaryButton": "Watch Demo"
     },
     "features": {
-      "title": "Features",
-      "subtitle": "Powerful AI image tools at your fingertips",
-      "description": "Experience the next generation of image creation and editing with advanced AI technology",
+      "title": "Key Features and Improvements",
+      "subtitle": "Professional-grade AI tools for creators",
+      "description": "Seedream 4.5 represents a major upgrade with cutting-edge capabilities designed for production workflows",
       "items": {
         "item-1": {
-          "title": "High-Fidelity Image Generation",
-          "description": "Create stunning, photorealistic images with exceptional detail and quality. Our AI produces outputs that rival professional photography and digital art."
+          "title": "Enhanced Prompt Adherence",
+          "description": "Better understands complex instructions, including multi-step prompts and up to 14 reference images, while maintaining consistency in elements like faces, textures, and lighting."
         },
         "item-2": {
-          "title": "Consistent Character Rendering",
-          "description": "Maintain character consistency across multiple images. Perfect for storytelling, branding, and creative projects that require cohesive visual identity."
+          "title": "Cinematic Aesthetics",
+          "description": "Produces 4K-ready visuals (up to 4096×4096 resolution) with realistic depth, lighting, color palettes, and material rendering—ideal for fashion, product showcases, or editorial content."
         },
         "item-3": {
-          "title": "Sharp Typography Control",
-          "description": "Generate images with crisp, readable text and precise typography. Ideal for creating marketing materials, social media posts, and branded content."
+          "title": "Superior Text Rendering",
+          "description": "Handles typography accurately, making it great for posters, brand visuals, and labels with small text (e.g., ingredient lists)."
         },
         "item-4": {
-          "title": "Professional Photo Editing",
-          "description": "Edit and enhance your images with AI-powered tools. From subtle adjustments to dramatic transformations, achieve professional results effortlessly."
+          "title": "Multi-Image Consistency",
+          "description": "Supports controllable edits across multiple images, preserving facial features, spatial logic, and scene details without random failures in complex scenarios."
         }
       }
     },
     "features2": {
-      "title": "Features2",
-      "subtitle": "The features of your product",
-      "description": "Write the description of your product here",
-      "feature-1": "Product Feature One",
-      "feature-2": "Product Feature Two",
-      "feature-3": "Product Feature Three",
-      "feature-4": "Product Feature Four"
+      "title": "Advanced AI Capabilities",
+      "subtitle": "Next-generation image technology",
+      "description": "Experience the power of state-of-the-art AI models trained on millions of high-quality images",
+      "feature-1": "Real-time Generation",
+      "feature-2": "Smart Image Editing",
+      "feature-3": "Style Transfer",
+      "feature-4": "Background Removal"
     },
     "features3": {
-      "title": "Features3",
-      "subtitle": "The features of your product",
-      "description": "Write the description of your product here",
+      "title": "Complete Creative Control",
+      "subtitle": "Tools designed for professionals",
+      "description": "Everything you need to create, edit, and perfect your visual content in one powerful platform",
       "items": {
         "item-1": {
-          "title": "Product Feature One",
-          "description": "Please write the detailed description of feature one here"
+          "title": "AI-Powered Upscaling",
+          "description": "Enhance image resolution up to 4K while maintaining sharpness and detail quality"
         },
         "item-2": {
-          "title": "Product Feature Two",
-          "description": "Please write the detailed description of feature two here"
+          "title": "Intelligent Inpainting",
+          "description": "Remove unwanted objects or fill missing areas with context-aware AI technology"
         },
         "item-3": {
-          "title": "Product Feature Three",
-          "description": "Please write the detailed description of feature three here"
+          "title": "Advanced Color Grading",
+          "description": "Professional color correction tools with AI-assisted palette suggestions"
         },
         "item-4": {
-          "title": "Product Feature Four",
-          "description": "Please write the detailed description of feature four here"
+          "title": "Batch Processing",
+          "description": "Apply edits and generate variations across multiple images simultaneously"
         },
         "item-5": {
-          "title": "Product Feature Five",
-          "description": "Please write the detailed description of feature five here"
+          "title": "Version Control",
+          "description": "Track changes, compare variations, and revert to any previous version instantly"
         },
         "item-6": {
-          "title": "Product Feature Six",
-          "description": "Please write the detailed description of feature six here"
+          "title": "Team Collaboration",
+          "description": "Share projects, get feedback, and work together in real-time with your team"
         }
       }
     },
     "pricing": {
-      "title": "Pricing",
-      "subtitle": "Pricing",
-      "description": "Choose the plan that works best for you"
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Choose your creative journey",
+      "description": "Start free and upgrade as you grow. All plans include access to our core AI image generation features"
     },
     "faqs": {
-      "title": "FAQ",
-      "subtitle": "Frequently Asked Questions",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know",
       "items": {
         "item-1": {
-          "question": "Do you offer a free trial?",
-          "answer": "Yes, we offer a 7-day free trial."
+          "question": "What image formats does Seedream 4.5 support?",
+          "answer": "Seedream 4.5 supports all major formats including PNG, JPEG, WebP, and TIFF. You can generate images up to 4096×4096 resolution and export in your preferred format."
         },
         "item-2": {
-          "question": "How do I cancel my subscription?",
-          "answer": "You can cancel your subscription by visiting the billing page."
+          "question": "How do credits work?",
+          "answer": "Each image generation or edit consumes credits based on complexity and resolution. Free users get 50 credits monthly, Pro users get 1000 credits, and you can purchase additional credit packages anytime."
         },
         "item-3": {
-          "question": "Can I change my plan?",
-          "answer": "Yes, you can change your plan at any time by visiting the billing page."
+          "question": "Can I use generated images commercially?",
+          "answer": "Yes! All images you create with Seedream 4.5 are yours to use for commercial purposes. Pro and Lifetime users get extended licensing rights."
         },
         "item-4": {
-          "question": "What is the refund policy?",
-          "answer": "We offer a 30-day money-back guarantee if you are not happy with our product."
+          "question": "What's the refund policy?",
+          "answer": "We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied with Seedream 4.5, contact our support team for a full refund."
         },
         "item-5": {
-          "question": "Can't find what you're looking for?",
-          "answer": "Please contact our customer support team at support@mksaas.com"
+          "question": "Need help or have questions?",
+          "answer": "Our support team is here to help! Contact us at support@seedream4-5.io or visit our documentation for tutorials and guides."
         }
       }
     },
     "testimonials": {
-      "title": "Testimonials",
-      "subtitle": "What our customers are saying",
+      "title": "Loved by Creators Worldwide",
+      "subtitle": "See what our users are saying",
       "items": {
         "item-1": {
-          "name": "Jonathan Yombo",
-          "role": "Software Engineer",
-          "image": "https://randomuser.me/api/portraits/men/1.jpg",
-          "quote": "MkSaaS is really extraordinary and very practical, no need to break your head. A real gold mine."
+          "name": "Sarah Chen",
+          "role": "Digital Artist",
+          "image": "https://randomuser.me/api/portraits/women/1.jpg",
+          "quote": "Seedream 4.5 has completely transformed my creative workflow. The image quality is incredible and the AI understands exactly what I want."
         },
         "item-2": {
-          "name": "Yves Kalume",
-          "role": "GDE - Android",
+          "name": "Marcus Johnson",
+          "role": "Marketing Director",
           "image": "https://randomuser.me/api/portraits/men/6.jpg",
-          "quote": "With no experience in webdesign I just redesigned my entire website in a few minutes with tailwindcss thanks to MkSaaS."
+          "quote": "We've cut our content creation time in half. The ability to generate on-brand visuals at scale is a game-changer for our team."
         },
         "item-3": {
-          "name": "Yucel Faruksahan",
-          "role": "Tailkits Creator",
-          "image": "https://randomuser.me/api/portraits/men/7.jpg",
-          "quote": "Great work on MkSaaS template. This is one of the best personal website that I have seen so far :)"
+          "name": "Elena Rodriguez",
+          "role": "Freelance Designer",
+          "image": "https://randomuser.me/api/portraits/women/7.jpg",
+          "quote": "The text rendering feature is mind-blowing. I can finally create product mockups with perfect typography in seconds."
         },
         "item-4": {
-          "name": "Anonymous author",
-          "role": "Product Manager",
+          "name": "David Park",
+          "role": "Content Creator",
           "image": "https://randomuser.me/api/portraits/men/8.jpg",
-          "quote": "I downloaded the one of MkSaaS template which is very clear to understand at the start and you could modify the codes/blocks to fit perfectly on your purpose of the page."
+          "quote": "As a social media creator, I need fresh content daily. Seedream 4.5 helps me maintain quality while meeting tight deadlines."
         },
         "item-5": {
-          "name": "Shekinah Tshiokufila",
-          "role": "Senior Software Engineer",
-          "image": "https://randomuser.me/api/portraits/men/4.jpg",
-          "quote": "MkSaaS is redefining the standard of web design, with these blocks it provides an easy and efficient way for those who love beauty but may lack the time to implement it."
+          "name": "Aisha Patel",
+          "role": "Brand Strategist",
+          "image": "https://randomuser.me/api/portraits/women/4.jpg",
+          "quote": "The consistency across image sets is remarkable. We can now maintain visual coherence across all our campaign materials."
         },
         "item-6": {
-          "name": "Oketa Fred",
-          "role": "Fullstack Developer",
+          "name": "Tom Anderson",
+          "role": "Product Designer",
           "image": "https://randomuser.me/api/portraits/men/2.jpg",
-          "quote": "I absolutely love MkSaaS! The component blocks are beautifully designed and easy to use, which makes creating a great-looking website a breeze."
+          "quote": "The integration with Figma saves me hours every week. I can generate and iterate on visual concepts without leaving my design tool."
         },
         "item-7": {
-          "name": "Zeki",
-          "role": "Founder of ChatExtend",
-          "image": "https://randomuser.me/api/portraits/men/5.jpg",
-          "quote": "MkSaaS is the perfect fusion of simplicity and versatility, enabling us to create UIs that are as stunning as they are user-friendly."
+          "name": "Lisa Wong",
+          "role": "E-commerce Manager",
+          "image": "https://randomuser.me/api/portraits/women/5.jpg",
+          "quote": "Product photography has never been easier. We can create professional-looking product shots in any setting imaginable."
         },
         "item-8": {
-          "name": "Joseph Kitheka",
-          "role": "Fullstack Developer",
+          "name": "James Miller",
+          "role": "Creative Director",
           "image": "https://randomuser.me/api/portraits/men/9.jpg",
-          "quote": "MkSaaS has transformed the way I develop web applications. Their extensive collection of UI components, blocks, and templates has significantly accelerated my workflow."
+          "quote": "The 4K output quality is exceptional. We use Seedream 4.5 for everything from social posts to large-format print campaigns."
         },
         "item-9": {
-          "name": "Khatab Wedaa",
-          "role": "MerakiUI Creator",
-          "image": "https://randomuser.me/api/portraits/men/10.jpg",
-          "quote": "MkSaaS is an elegant, clean, and responsive tailwind css components it's very helpful to start fast with your project."
+          "name": "Nina Kowalski",
+          "role": "Photographer",
+          "image": "https://randomuser.me/api/portraits/women/10.jpg",
+          "quote": "The inpainting tool is incredibly intelligent. It understands lighting and perspective better than any tool I've used before."
         },
         "item-10": {
-          "name": "Rodrigo Aguilar",
-          "role": "TailwindAwesome Creator",
+          "name": "Ahmed Hassan",
+          "role": "UI/UX Designer",
           "image": "https://randomuser.me/api/portraits/men/11.jpg",
-          "quote": "I love MkSaaS ❤️. The component blocks are well-structured, simple to use, and beautifully designed. It makes it really easy to have a good-looking website in no time."
+          "quote": "Perfect for generating hero images and illustrations for web projects. The style consistency is exactly what designers need."
         },
         "item-11": {
-          "name": "Eric Ampire",
-          "role": "@GoogleDevExpert for Android",
-          "image": "https://randomuser.me/api/portraits/men/12.jpg",
-          "quote": "MkSaaS templates are the perfect solution for anyone who wants to create a beautiful and functional website without any web design experience."
+          "name": "Sophie Martin",
+          "role": "Illustrator",
+          "image": "https://randomuser.me/api/portraits/women/12.jpg",
+          "quote": "I use Seedream 4.5 to explore concepts before committing to final illustrations. It's like having an infinite mood board."
         },
         "item-12": {
-          "name": "Roland Tubonge",
-          "role": "Software Engineer",
+          "name": "Carlos Rivera",
+          "role": "Fashion Designer",
           "image": "https://randomuser.me/api/portraits/men/13.jpg",
-          "quote": "MkSaaS is so well designed that even with a very poor knowledge of web design you can do miracles. Let yourself be seduced!"
+          "quote": "The cinematic quality and attention to fabric textures is incredible. It's become essential for my design presentations."
         }
       }
     },
     "stats": {
-      "title": "Stats",
+      "title": "Trusted by Creators",
       "subtitle": "Seedream 4.5 in numbers",
-      "description": "Seedream 4.5 helps creators generate stunning images with AI-powered tools",
+      "description": "Join thousands of creators, designers, and businesses using Seedream 4.5 to bring their visual ideas to life",
       "items": {
         "item-1": {
-          "title": "Images Generated"
+          "title": "Images Generated Daily"
         },
         "item-2": {
           "title": "Active Creators"
         },
         "item-3": {
-          "title": "Projects Created"
+          "title": "Projects Completed"
         }
       }
     },
     "calltoaction": {
-      "title": "Start Creating",
-      "description": "Seedream 4.5 helps you create stunning images with AI-powered generation and editing tools",
-      "primaryButton": "Get Started",
-      "secondaryButton": "See Demo"
+      "title": "Ready to Transform Your Creative Process?",
+      "description": "Join thousands of creators, designers, and businesses using Seedream 4.5 to generate stunning, professional-quality images in seconds. Start free today.",
+      "primaryButton": "Start Creating Free",
+      "secondaryButton": "View Gallery"
     }
   },
   "AITextPage": {

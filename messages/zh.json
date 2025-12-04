@@ -143,10 +143,10 @@
   },
   "AboutPage": {
     "title": "关于Seedream 4.5",
-    "description": "Seedream 4.5是一个先进的AI图像生成和编辑平台，采用尖端技术构建，帮助创作者将视觉创意变为现实。",
+    "description": "Seedream 4.5是字节跳动先进AI图像生成与编辑模型的最新版本，于2025年12月3日发布。它相较于前代进行了重大升级，专注于为创作者、设计师和市场人员打造的专业级工具。",
     "authorName": "Seedream 4.5",
-    "authorBio": "AI图像生成与编辑平台",
-    "introduction": "👋 欢迎来到Seedream 4.5！我们是一个AI驱动的图像生成和编辑平台，采用现代技术构建。无论您是从零开始创建新图像还是编辑现有图像，我们的工具都能帮助您轻松实现专业效果。",
+    "authorBio": "字节跳动AI图像生成与编辑",
+    "introduction": "Seedream 4.5是字节跳动（TikTok背后公司）先进AI图像生成与编辑模型的最新版本。该模型将文本生成图像和图像编辑整合为统一系统，强调电影般的真实感、精准的提示遵循以及适合制作工作流程的高保真输出。",
     "talkWithMe": "联系我们",
     "followMe": "关注我们"
   },
@@ -790,248 +790,248 @@
   },
   "HomePage": {
     "title": "Seedream 4.5",
-    "description": "使用AI驱动的生成和编辑工具创建和编辑精美图像",
+    "description": "字节跳动先进的AI图像生成与编辑模型",
     "hero": {
-      "title": "使用AI工具创建精美图像",
-      "description": "Seedream 4.5结合了强大的AI图像生成和专业编辑功能。轻松生成高保真图像，保持角色一致性，创建清晰的排版。",
-      "introduction": "介绍Seedream 4.5",
-      "primary": "开始使用",
-      "secondary": "查看演示"
+      "title": "用AI驱动的精准创作令人惊叹的图像",
+      "description": "Seedream 4.5将专业级AI图像生成带到您的指尖。生成逼真的图像，精确控制每个像素进行编辑，用电影级质量输出实现您的创意愿景，分辨率高达4K。",
+      "introduction": "由字节跳动AI驱动",
+      "primary": "免费开始创作",
+      "secondary": "查看示例"
     },
     "logocloud": {
-      "title": "您最爱公司都是我们的合作伙伴"
+      "title": "全球创作者和专业人士的信赖之选"
     },
     "integration": {
-      "title": "集成",
-      "subtitle": "与您最喜欢的工具集成",
-      "description": "无缝连接流行的平台和服务，以增强您的工作流程。",
-      "learnMore": "了解更多",
+      "title": "无缝创意工作流",
+      "subtitle": "与您喜爱的工具配合使用",
+      "description": "导出为任意格式，将Seedream 4.5集成到您现有的创意流程中。",
+      "learnMore": "探索集成",
       "items": {
         "item-1": {
-          "title": "Google Gemini",
-          "description": "这里是Google Gemini的描述，详细介绍Google Gemini的功能和优势。"
+          "title": "Adobe创意套件",
+          "description": "直接导出到Photoshop、Illustrator和其他Adobe应用进行高级编辑。"
         },
         "item-2": {
-          "title": "Replit",
-          "description": "这里是Replit的描述，详细介绍Replit的功能和优势。"
+          "title": "Figma与Sketch",
+          "description": "将AI生成的资源无缝集成到您的设计工作流程中。"
         },
         "item-3": {
-          "title": "MagicUI",
-          "description": "这里是MagicUI的描述，详细介绍MagicUI的功能和优势。"
+          "title": "Canva",
+          "description": "直接在Canva设计和演示文稿中使用AI生成的图像。"
         },
         "item-4": {
-          "title": "VSCodium",
-          "description": "这里是VSCodium的描述，详细介绍VSCodium的功能和优势。"
+          "title": "社交媒体平台",
+          "description": "为Instagram、TikTok和其他社交渠道优化和导出图像。"
         },
         "item-5": {
-          "title": "MediaWiki",
-          "description": "这里是MediaWiki的描述，详细介绍MediaWiki的功能和优势。"
+          "title": "内容管理系统",
+          "description": "与WordPress、Webflow和主流CMS平台直接集成。"
         },
         "item-6": {
-          "title": "Google PaLM",
-          "description": "这里是Google PaLM的描述，详细介绍Google PaLM的功能和优势。"
+          "title": "云存储",
+          "description": "自动与Dropbox、Google Drive和云存储服务同步。"
         }
       }
     },
     "integration2": {
-      "title": "与您最喜欢的工具集成",
-      "description": "无缝连接流行的平台和服务，以增强您的工作流程。",
-      "primaryButton": "开始使用",
-      "secondaryButton": "查看演示"
+      "title": "为专业工作流而生",
+      "description": "从独立创作者到企业团队，Seedream 4.5随您的需求扩展。以任意格式导出，实时协作，并在所有视觉内容中保持品牌一致性。",
+      "primaryButton": "免费试用",
+      "secondaryButton": "观看演示"
     },
     "features": {
-      "title": "功能",
-      "subtitle": "您的 SaaS 产品功能",
-      "description": "请在这里介绍您的 SaaS 产品的特色功能的信息",
+      "title": "主要特色与改进",
+      "subtitle": "为创作者打造的专业级AI工具",
+      "description": "Seedream 4.5相较于前代进行了重大升级，提供专为制作工作流程设计的尖端功能",
       "items": {
         "item-1": {
-          "title": "产品特色功能一",
-          "description": "请在这里详细描述您的产品特色功能一，尽可能详细，使其更吸引用户，提高落地页的转化率"
+          "title": "增强提示遵循和对齐",
+          "description": "更好地理解复杂指令，包括多步骤提示和多达14张参考图片，同时保持面部、纹理和光影等元素的一致性。"
         },
         "item-2": {
-          "title": "产品特色功能二",
-          "description": "请在这里详细描述您的产品特色功能二，尽可能详细，使其更吸引用户，提高落地页的转化率"
+          "title": "电影美学",
+          "description": "制作4K支持的视觉效果（最高可达4096×4096分辨率），具备逼真的深度、光影、色彩搭配和材质渲染——非常适合时尚、产品展示或编辑内容。"
         },
         "item-3": {
-          "title": "产品特色功能三",
-          "description": "请在这里详细描述您的产品特色功能三，尽可能详细，使其更吸引用户，提高落地页的转化率"
+          "title": "优越的文本渲染",
+          "description": "字体处理准确，非常适合海报、品牌视觉和带有小文字的标签（如成分表）。"
         },
         "item-4": {
-          "title": "产品特色功能四",
-          "description": "请在这里详细描述您的产品特色功能四，尽可能详细，使其更吸引用户，提高落地页的转化率"
+          "title": "多图像编辑与一致性",
+          "description": "支持多张图像的可控编辑，在复杂场景中保持面部特征、空间逻辑和场景细节，避免随机故障。"
         }
       }
     },
     "features2": {
-      "title": "功能2",
-      "subtitle": "您的 SaaS 产品功能",
-      "description": "请在这里介绍您的 SaaS 产品的特色功能的信息",
-      "feature-1": "特色功能特点一",
-      "feature-2": "特色功能特点二",
-      "feature-3": "特色功能特点三",
-      "feature-4": "特色功能特点四"
+      "title": "先进的AI能力",
+      "subtitle": "下一代图像技术",
+      "description": "体验由数百万高质量图像训练的最先进AI模型的强大功能",
+      "feature-1": "实时生成",
+      "feature-2": "智能图像编辑",
+      "feature-3": "风格迁移",
+      "feature-4": "背景移除"
     },
     "features3": {
-      "title": "功能3",
-      "subtitle": "您的 SaaS 产品功能",
-      "description": "请在这里介绍您的 SaaS 产品的特色功能的信息",
+      "title": "完全的创意控制",
+      "subtitle": "为专业人士设计的工具",
+      "description": "在一个强大的平台上创建、编辑和完善视觉内容所需的一切",
       "items": {
         "item-1": {
-          "title": "产品特色功能一",
-          "description": "请在这里详细描述您的产品特色功能一，尽可能详细，使其更吸引用户"
+          "title": "AI驱动的放大",
+          "description": "将图像分辨率提升至4K，同时保持清晰度和细节质量"
         },
         "item-2": {
-          "title": "产品特色功能二",
-          "description": "请在这里详细描述您的产品特色功能二，尽可能详细，使其更吸引用户"
+          "title": "智能修复",
+          "description": "通过上下文感知的AI技术移除不需要的对象或填充缺失区域"
         },
         "item-3": {
-          "title": "产品特色功能三",
-          "description": "请在这里详细描述您的产品特色功能三，尽可能详细，使其更吸引用户"
+          "title": "高级调色",
+          "description": "具有AI辅助调色板建议的专业色彩校正工具"
         },
         "item-4": {
-          "title": "产品特色功能四",
-          "description": "请在这里详细描述您的产品特色功能四，尽可能详细，使其更吸引用户"
+          "title": "批量处理",
+          "description": "同时对多张图像应用编辑和生成变体"
         },
         "item-5": {
-          "title": "产品特色功能五",
-          "description": "请在这里详细描述您的产品特色功能五，尽可能详细，使其更吸引用户"
+          "title": "版本控制",
+          "description": "跟踪更改，比较变体，并立即恢复到任何先前版本"
         },
         "item-6": {
-          "title": "产品特色功能六",
-          "description": "请在这里详细描述您的产品特色功能六，尽可能详细，使其更吸引用户"
+          "title": "团队协作",
+          "description": "分享项目，获取反馈，与团队实时协作"
         }
       }
     },
     "pricing": {
-      "title": "价格",
-      "subtitle": "价格",
-      "description": "选择最适合您的付费计划"
+      "title": "简单透明的定价",
+      "subtitle": "选择您的创作之旅",
+      "description": "免费开始，随着成长升级。所有计划都包含访问我们核心AI图像生成功能的权限"
     },
     "faqs": {
       "title": "常见问题",
-      "subtitle": "如果您有任何问题，请随时联系我们",
+      "subtitle": "您需要了解的一切",
       "items": {
         "item-1": {
-          "question": "你们提供免费试用吗？",
-          "answer": "是的，我们提供7天的免费试用。"
+          "question": "Seedream 4.5支持哪些图像格式？",
+          "answer": "Seedream 4.5支持所有主要格式，包括PNG、JPEG、WebP和TIFF。您可以生成最高4096×4096分辨率的图像，并以您喜欢的格式导出。"
         },
         "item-2": {
-          "question": "如何取消我的订阅？",
-          "answer": "您可以通过访问账单页面取消您的订阅。"
+          "question": "积分是如何运作的？",
+          "answer": "每次图像生成或编辑都会根据复杂度和分辨率消耗积分。免费用户每月获得50个积分，专业版用户获得1000个积分，您可以随时购买额外的积分包。"
         },
         "item-3": {
-          "question": "我可以更改我的计划吗？",
-          "answer": "是的，您可以随时通过访问账单页面更改您的计划。"
+          "question": "我可以将生成的图像用于商业用途吗？",
+          "answer": "可以！您使用Seedream 4.5创建的所有图像都归您所有，可用于商业用途。专业版和终身版用户可获得扩展的许可权限。"
         },
         "item-4": {
-          "question": "你们的退款政策是什么？",
-          "answer": "是的，我们提供30天的退款保证。"
+          "question": "退款政策是什么？",
+          "answer": "我们为所有付费计划提供30天退款保证。如果您对Seedream 4.5不满意，请联系我们的支持团队获得全额退款。"
         },
         "item-5": {
-          "question": "找不到您想问的问题？",
-          "answer": "请联系我们的客户支持团队，邮箱地址：support@mksaas.com"
+          "question": "需要帮助或有疑问？",
+          "answer": "我们的支持团队随时为您服务！请通过support@seedream4-5.io联系我们或访问我们的文档查看教程和指南。"
         }
       }
     },
     "testimonials": {
-      "title": "客户评价",
-      "subtitle": "我们的客户对我们的评价",
+      "title": "深受全球创作者喜爱",
+      "subtitle": "看看我们的用户怎么说",
       "items": {
         "item-1": {
-          "name": "Jonathan Yombo",
-          "role": "软件工程师",
-          "image": "https://randomuser.me/api/portraits/men/1.jpg",
-          "quote": "MkSaaS 非常出色且实用，无需费心，一个真正的金矿。"
+          "name": "陈莎拉",
+          "role": "数字艺术家",
+          "image": "https://randomuser.me/api/portraits/women/1.jpg",
+          "quote": "Seedream 4.5彻底改变了我的创意工作流程。图像质量令人难以置信，AI完全理解我想要什么。"
         },
         "item-2": {
-          "name": "Yves Kalume",
-          "role": "Android GDE",
+          "name": "马库斯·约翰逊",
+          "role": "营销总监",
           "image": "https://randomuser.me/api/portraits/men/6.jpg",
-          "quote": "没有网页设计经验，我只需几分钟就可以用 Tailwindcss 重新设计我的整个网站，感谢 MkSaaS。"
+          "quote": "我们的内容创作时间减少了一半。能够大规模生成符合品牌的视觉效果对我们团队来说是一个游戏规则改变者。"
         },
         "item-3": {
-          "name": "Yucel Faruksahan",
-          "role": "Tailkits 创建者",
-          "image": "https://randomuser.me/api/portraits/men/7.jpg",
-          "quote": "MkSaaS 模板做得很好，这是我见过最好的 SaaS 模板，没有之一 :)"
+          "name": "埃琳娜·罗德里格斯",
+          "role": "自由设计师",
+          "image": "https://randomuser.me/api/portraits/women/7.jpg",
+          "quote": "文本渲染功能令人惊叹。我终于可以在几秒钟内创建具有完美排版的产品模型了。"
         },
         "item-4": {
-          "name": "Anonymous author",
-          "role": "产品经理",
+          "name": "大卫·朴",
+          "role": "内容创作者",
           "image": "https://randomuser.me/api/portraits/men/8.jpg",
-          "quote": "我不熟悉 Tailwind，我想自己做一些页面，我在网上搜索了很多英雄页面和区块。然而，大多数都没有给我一个清晰的想法，或者需要一些 HTML/CSS 编码背景来从原始文件中做一些更改，或者太贵了。我下载了其中一个 MkSaaS 模板，它非常容易理解，你可以在开始时修改代码/区块以完美地适应你的页面目的。"
+          "quote": "作为社交媒体创作者，我每天都需要新鲜内容。Seedream 4.5帮助我在满足紧迫截止日期的同时保持质量。"
         },
         "item-5": {
-          "name": "Shekinah Tshiokufila",
-          "role": "高级软件工程师",
-          "image": "https://randomuser.me/api/portraits/men/4.jpg",
-          "quote": "MkSaaS 正在重新定义网页设计标准，这些区块为那些喜欢美丽但可能缺乏时间实现它的人提供了简单且高效的方式。我只能推荐这个不可思议的奇迹。"
+          "name": "艾莎·帕特尔",
+          "role": "品牌策略师",
+          "image": "https://randomuser.me/api/portraits/women/4.jpg",
+          "quote": "图像集之间的一致性非常出色。我们现在可以在所有营销活动素材中保持视觉一致性。"
         },
         "item-6": {
-          "name": "Oketa Fred",
-          "role": "全栈开发工程师",
+          "name": "汤姆·安德森",
+          "role": "产品设计师",
           "image": "https://randomuser.me/api/portraits/men/2.jpg",
-          "quote": "我绝对喜欢 MkSaaS！这些组件区块设计精美且易于使用，使创建一个出色的网站变得轻而易举。"
+          "quote": "与Figma的集成每周为我节省数小时。我可以在不离开设计工具的情况下生成和迭代视觉概念。"
         },
         "item-7": {
-          "name": "Zeki",
-          "role": "ChatExtend 创始人",
-          "image": "https://randomuser.me/api/portraits/men/5.jpg",
-          "quote": "使用 MkSaaS 就像解锁了一个秘密的设计超能力。它是简单性和多功能性的完美融合，使我们能够创建既令人惊叹又用户友好的界面。"
+          "name": "丽萨·王",
+          "role": "电子商务经理",
+          "image": "https://randomuser.me/api/portraits/women/5.jpg",
+          "quote": "产品摄影从未如此简单。我们可以在任何可想象的环境中创建专业外观的产品照片。"
         },
         "item-8": {
-          "name": "Joseph Kitheka",
-          "role": "全栈开发工程师",
+          "name": "詹姆斯·米勒",
+          "role": "创意总监",
           "image": "https://randomuser.me/api/portraits/men/9.jpg",
-          "quote": "MkSaaS 改变了我的网页开发方式。他们的 UI 组件、区块和模板极大地加速了我的工作流程。定制每个方面的灵活性使我能够创建独特的用户体验。MkSaaS 是现代网页开发的游戏规则改变者！"
+          "quote": "4K输出质量非常出色。我们将Seedream 4.5用于从社交媒体帖子到大幅面印刷活动的所有内容。"
         },
         "item-9": {
-          "name": "Khatab Wedaa",
-          "role": "MerakiUI 创建者",
-          "image": "https://randomuser.me/api/portraits/men/10.jpg",
-          "quote": "MkSaaS 是一个优雅、干净且响应式的 SaaS 模板，它非常有助于快速开始您的项目。"
+          "name": "妮娜·科瓦尔斯基",
+          "role": "摄影师",
+          "image": "https://randomuser.me/api/portraits/women/10.jpg",
+          "quote": "修复工具非常智能。它对光线和透视的理解比我用过的任何工具都好。"
         },
         "item-10": {
-          "name": "Rodrigo Aguilar",
-          "role": "TailwindAwesome 创建者",
+          "name": "艾哈迈德·哈桑",
+          "role": "UI/UX设计师",
           "image": "https://randomuser.me/api/portraits/men/11.jpg",
-          "quote": "我爱 MkSaaS ❤️。这些组件区块结构良好，易于使用，设计精美。它使创建一个出色的网站变得非常容易。"
+          "quote": "非常适合为网络项目生成主视觉和插图。风格一致性正是设计师所需要的。"
         },
         "item-11": {
-          "name": "Eric Ampire",
-          "role": "Google 开发者专家",
-          "image": "https://randomuser.me/api/portraits/men/12.jpg",
-          "quote": "MkSaaS 模板是任何想要创建一个美丽且功能齐全的网站但没有网页设计经验的人的完美解决方案。这些模板易于使用，可定制，并且响应迅速。我强烈推荐 MkSaaS 模板给任何想要创建网站的人。"
+          "name": "索菲·马丁",
+          "role": "插画师",
+          "image": "https://randomuser.me/api/portraits/women/12.jpg",
+          "quote": "我使用Seedream 4.5在投入最终插图之前探索概念。就像拥有一个无限的情绪板。"
         },
         "item-12": {
-          "name": "Roland Tubonge",
-          "role": "软件工程师",
+          "name": "卡洛斯·里维拉",
+          "role": "时装设计师",
           "image": "https://randomuser.me/api/portraits/men/13.jpg",
-          "quote": "MkSaaS 设计得如此出色，即使没有网页设计经验，您也可以创造奇迹。让自己被吸引！"
+          "quote": "电影般的质量和对织物纹理的关注令人难以置信。它已成为我设计演示的必备工具。"
         }
       }
     },
     "stats": {
-      "title": "统计",
-      "subtitle": "MkSaaS 相关的数字",
-      "description": "MkSaaS 可让您在几天内轻松构建您的 AI SaaS",
+      "title": "创作者的信赖之选",
+      "subtitle": "Seedream 4.5 的数据",
+      "description": "加入成千上万使用Seedream 4.5将视觉创意变为现实的创作者、设计师和企业",
       "items": {
         "item-1": {
-          "title": "GitHub 上的星星"
+          "title": "每日生成图像数"
         },
         "item-2": {
-          "title": "使用 MkSaaS 的活跃用户"
+          "title": "活跃创作者"
         },
         "item-3": {
-          "title": "使用 MkSaaS 启动的应用"
+          "title": "完成的项目"
         }
       }
     },
     "calltoaction": {
-      "title": "开始构建",
-      "description": "MkSaaS 可让您在几天内轻松构建您的 AI SaaS",
-      "primaryButton": "开始使用",
-      "secondaryButton": "查看演示"
+      "title": "准备好改变您的创作流程了吗？",
+      "description": "加入成千上万使用Seedream 4.5在几秒钟内生成令人惊叹的专业品质图像的创作者、设计师和企业。今天就免费开始。",
+      "primaryButton": "免费开始创作",
+      "secondaryButton": "查看画廊"
     }
   },
   "AITextPage": {
