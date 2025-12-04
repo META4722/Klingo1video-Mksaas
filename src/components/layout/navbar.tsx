@@ -250,8 +250,9 @@ export function Navbar({ scroll }: NavBarProps) {
               </div>
             )}
 
-            <ModeSwitcher />
-            <LocaleSwitcher />
+            {/* Hidden for Seedream 4.5 */}
+            {/* <ModeSwitcher /> */}
+            {/* <LocaleSwitcher /> */}
           </div>
         </nav>
 

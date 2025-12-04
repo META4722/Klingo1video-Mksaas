@@ -35,8 +35,8 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 {t('Marketing.footer.tagline')}
               </p>
 
-              {/* social links */}
-              <div className="flex items-center gap-4 py-2">
+              {/* social links - Hidden for Seedream 4.5 */}
+              {/* <div className="flex items-center gap-4 py-2">
                 <div className="flex items-center gap-2">
                   {socialLinks?.map((link) => (
                     <a
@@ -53,10 +53,10 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                     </a>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
-              {/* built with button */}
-              <BuiltWithButton />
+              {/* built with button - Hidden for Seedream 4.5 */}
+              {/* <BuiltWithButton /> */}
             </div>
           </div>
 
@@ -97,9 +97,10 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
             Reserved.
           </span>
 
-          <div className="flex items-center gap-x-4">
+          {/* Mode switcher - Hidden for Seedream 4.5 */}
+          {/* <div className="flex items-center gap-x-4">
             <ModeSwitcherHorizontal />
-          </div>
+          </div> */}
         </Container>
       </div>
     </footer>

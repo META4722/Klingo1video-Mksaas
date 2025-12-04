@@ -346,10 +346,11 @@ function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
         </ul>
 
         {/* bottom buttons */}
-        <div className="flex w-full items-center justify-between gap-4 border-t border-border/50 p-4">
+        {/* Hidden for Seedream 4.5 */}
+        {/* <div className="flex w-full items-center justify-between gap-4 border-t border-border/50 p-4">
           <LocaleSelector />
           <ModeSwitcherHorizontal />
-        </div>
+        </div> */}
       </div>
     </div>
   );

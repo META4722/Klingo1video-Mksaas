@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "name": "MkSaaS Demo",
-    "title": "MkSaaS - The Best AI SaaS Boilerplate",
-    "description": "MkSaaS is the best AI SaaS boilerplate. Make AI SaaS in days, simply and effortlessly"
+    "name": "Seedream 4.5",
+    "title": "Seedream 4.5 - AI Image Editing & Generation Platform",
+    "description": "Create and edit stunning images with Seedream 4.5. Advanced AI-powered image generation with high-fidelity outputs, consistent character rendering, and precise typography control. Professional image generator and photo editor combined."
   },
   "Common": {
     "premium": "Premium",
@@ -142,13 +142,13 @@
     "backToHome": "Back to home"
   },
   "AboutPage": {
-    "title": "About",
-    "description": "This is MkSaaS, an AI SaaS template built with modern technologies, helping you build your SaaS faster and better.",
-    "authorName": "MkSaaS",
-    "authorBio": "AI SaaS Boilerplate",
-    "introduction": "👋 Hi there! This is MkSaaS, an AI SaaS template built with modern technologies, helping you build your SaaS faster and better. If you have any questions, welcome to contact me.",
-    "talkWithMe": "Talk with me",
-    "followMe": "Follow me on X"
+    "title": "About Seedream 4.5",
+    "description": "Seedream 4.5 is an advanced AI-powered platform for image generation and editing, built with cutting-edge technology to help creators bring their visual ideas to life.",
+    "authorName": "Seedream 4.5",
+    "authorBio": "AI Image Generation & Editing Platform",
+    "introduction": "👋 Welcome to Seedream 4.5! We're an AI-powered image generation and editing platform built with modern technologies. Whether you're creating new images from scratch or editing existing ones, our tools help you achieve professional results effortlessly.",
+    "talkWithMe": "Contact us",
+    "followMe": "Follow us"
   },
   "ChangelogPage": {
     "title": "Changelog",
@@ -296,7 +296,7 @@
     "previousPage": "Previous",
     "nextPage": "Next",
     "chooseLanguage": "Select language",
-    "title": "MkSaaS Docs",
+    "title": "Seedream 4.5 Docs",
     "homepage": "Homepage"
   },
   "PremiumContent": {
@@ -449,7 +449,7 @@
       }
     },
     "footer": {
-      "tagline": "Make AI SaaS in days, simply and effortlessly",
+      "tagline": "Create stunning images with AI-powered generation and editing tools",
       "product": {
         "title": "Product",
         "items": {
@@ -789,12 +789,12 @@
     }
   },
   "HomePage": {
-    "title": "MkSaaS",
-    "description": "Make AI SaaS in days, simply and effortlessly",
+    "title": "Seedream 4.5",
+    "description": "Create and edit stunning images with AI-powered generation and editing tools",
     "hero": {
-      "title": "Make AI SaaS in days, simply and effortlessly",
-      "description": "The is a demo website built with MkSaaS, a Next.js SaaS boilerplate to help you build your AI SaaS faster and better.",
-      "introduction": "Introducing MkSaaS Boilerplate",
+      "title": "Create Stunning Images with AI-Powered Tools",
+      "description": "Seedream 4.5 combines powerful AI image generation with professional editing capabilities. Generate high-fidelity images, maintain character consistency, and create sharp typography with ease.",
+      "introduction": "Introducing Seedream 4.5",
       "primary": "Get Started",
       "secondary": "See Demo"
     },
@@ -841,24 +841,24 @@
     },
     "features": {
       "title": "Features",
-      "subtitle": "The features of your product",
-      "description": "Write the description of your product here",
+      "subtitle": "Powerful AI image tools at your fingertips",
+      "description": "Experience the next generation of image creation and editing with advanced AI technology",
       "items": {
         "item-1": {
-          "title": "Product Feature One",
-          "description": "Please write the detailed description of feature one here, make it as detailed as possible, make it more attractive to users"
+          "title": "High-Fidelity Image Generation",
+          "description": "Create stunning, photorealistic images with exceptional detail and quality. Our AI produces outputs that rival professional photography and digital art."
         },
         "item-2": {
-          "title": "Product Feature Two",
-          "description": "Please write the detailed description of feature two here, make it as detailed as possible, make it more attractive to users"
+          "title": "Consistent Character Rendering",
+          "description": "Maintain character consistency across multiple images. Perfect for storytelling, branding, and creative projects that require cohesive visual identity."
         },
         "item-3": {
-          "title": "Product Feature Three",
-          "description": "Please write the detailed description of feature three here, make it as detailed as possible, make it more attractive to users"
+          "title": "Sharp Typography Control",
+          "description": "Generate images with crisp, readable text and precise typography. Ideal for creating marketing materials, social media posts, and branded content."
         },
         "item-4": {
-          "title": "Product Feature Four",
-          "description": "Please write the detailed description of feature four here, make it as detailed as possible, make it more attractive to users"
+          "title": "Professional Photo Editing",
+          "description": "Edit and enhance your images with AI-powered tools. From subtle adjustments to dramatic transformations, achieve professional results effortlessly."
         }
       }
     },
@@ -1013,23 +1013,23 @@
     },
     "stats": {
       "title": "Stats",
-      "subtitle": "MkSaaS in numbers",
-      "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",
+      "subtitle": "Seedream 4.5 in numbers",
+      "description": "Seedream 4.5 helps creators generate stunning images with AI-powered tools",
       "items": {
         "item-1": {
-          "title": "Stars on GitHub"
+          "title": "Images Generated"
         },
         "item-2": {
-          "title": "Active Users"
+          "title": "Active Creators"
         },
         "item-3": {
-          "title": "Powered Apps"
+          "title": "Projects Created"
         }
       }
     },
     "calltoaction": {
-      "title": "Start Building",
-      "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly",
+      "title": "Start Creating",
+      "description": "Seedream 4.5 helps you create stunning images with AI-powered generation and editing tools",
       "primaryButton": "Get Started",
       "secondaryButton": "See Demo"
     }
@@ -1084,19 +1084,19 @@
     }
   },
   "AIImagePage": {
-    "title": "AI Image",
-    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+    "title": "AI Image Generation",
+    "description": "Create stunning images with Seedream 4.5's advanced AI image generation tools"
   },
   "AIChatPage": {
     "title": "AI Chat",
-    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+    "description": "Chat with AI to refine your image generation prompts and get creative suggestions"
   },
   "AIVideoPage": {
     "title": "AI Video",
-    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+    "description": "Transform your images into engaging video content with AI"
   },
   "AIAudioPage": {
     "title": "AI Audio",
-    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+    "description": "Generate audio descriptions and narrations for your images with AI"
   }
 }

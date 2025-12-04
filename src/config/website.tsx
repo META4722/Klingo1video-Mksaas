@@ -11,7 +11,7 @@ export const websiteConfig: WebsiteConfig = {
   ui: {
     mode: {
       defaultMode: 'dark',
-      enableSwitch: true,
+      enableSwitch: false,
     },
   },
   metadata: {
@@ -21,13 +21,14 @@ export const websiteConfig: WebsiteConfig = {
       logoDark: '/logo-dark.png',
     },
     social: {
-      github: 'https://github.com/MkSaaSHQ',
-      twitter: 'https://mksaas.link/twitter',
-      blueSky: 'https://mksaas.link/bsky',
-      discord: 'https://mksaas.link/discord',
-      mastodon: 'https://mksaas.link/mastodon',
-      linkedin: 'https://mksaas.link/linkedin',
-      youtube: 'https://mksaas.link/youtube',
+      // Social media links hidden for Seedream 4.5
+      // github: 'https://github.com/MkSaaSHQ',
+      // twitter: 'https://mksaas.link/twitter',
+      // blueSky: 'https://mksaas.link/bsky',
+      // discord: 'https://mksaas.link/discord',
+      // mastodon: 'https://mksaas.link/mastodon',
+      // linkedin: 'https://mksaas.link/linkedin',
+      // youtube: 'https://mksaas.link/youtube',
     },
   },
   features: {
@@ -76,8 +77,8 @@ export const websiteConfig: WebsiteConfig = {
   },
   mail: {
     provider: 'resend',
-    fromEmail: 'MkSaaS <support@mksaas.com>',
-    supportEmail: 'MkSaaS <support@mksaas.com>',
+    fromEmail: 'Seedream 4.5 <support@seedream4-5.io>',
+    supportEmail: 'Seedream 4.5 <support@seedream4-5.io>',
   },
   newsletter: {
     enable: true,
