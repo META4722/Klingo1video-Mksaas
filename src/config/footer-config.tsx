@@ -51,25 +51,26 @@ export function useFooterLinks(): NestedMenuItem[] {
               },
             ]
           : []),
-        ...(websiteConfig.docs.enable
-          ? [
-              {
-                title: t('resources.items.docs'),
-                href: Routes.Docs,
-                external: false,
-              },
-            ]
-          : []),
-        {
-          title: t('resources.items.changelog'),
-          href: Routes.Changelog,
-          external: false,
-        },
-        {
-          title: t('resources.items.roadmap'),
-          href: Routes.Roadmap,
-          external: false,
-        },
+        // Docs, Changelog, Roadmap hidden for Seedream 4.5
+        // ...(websiteConfig.docs.enable
+        //   ? [
+        //       {
+        //         title: t('resources.items.docs'),
+        //         href: Routes.Docs,
+        //         external: false,
+        //       },
+        //     ]
+        //   : []),
+        // {
+        //   title: t('resources.items.changelog'),
+        //   href: Routes.Changelog,
+        //   external: false,
+        // },
+        // {
+        //   title: t('resources.items.roadmap'),
+        //   href: Routes.Roadmap,
+        //   external: false,
+        // },
       ],
     },
     {
@@ -85,11 +86,12 @@ export function useFooterLinks(): NestedMenuItem[] {
           href: Routes.Contact,
           external: false,
         },
-        {
-          title: t('company.items.waitlist'),
-          href: Routes.Waitlist,
-          external: false,
-        },
+        // Waitlist hidden for Seedream 4.5
+        // {
+        //   title: t('company.items.waitlist'),
+        //   href: Routes.Waitlist,
+        //   external: false,
+        // },
       ],
     },
     {
