@@ -1,6 +1,8 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { useSession } from '@/hooks/use-session';
+import { useLocaleRouter } from '@/i18n/navigation';
 import {
   ChevronLeft,
   ChevronRight,
@@ -48,6 +50,8 @@ const showcaseImages = [
 
 export default function AIWorkbenchShowcase() {
   const t = useTranslations('HomePage.showcase');
+  const router = useLocaleRouter();
+  const session = useSession();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState<'edit' | 'generate'>('edit');
 
@@ -63,6 +67,16 @@ export default function AIWorkbenchShowcase() {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+  };
+
+  const handleStartGeneration = () => {
+    if (session?.user) {
+      // User is logged in, go to creation page
+      router.push('/creation');
+    } else {
+      // User is not logged in, redirect to login page
+      router.push('/auth/login');
+    }
   };
 
   return (
@@ -260,7 +274,7 @@ export default function AIWorkbenchShowcase() {
                   {/* Action Button */}
                   <div className="p-6 pt-4">
                     <Button
-                      disabled
+                      onClick={handleStartGeneration}
                       className="w-full h-12 text-base font-bold shadow-lg shadow-primary/25 transition-all duration-300"
                     >
                       <WandSparkles className="h-5 w-5 mr-2" />

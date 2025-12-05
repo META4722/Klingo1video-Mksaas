@@ -1,4 +1,4 @@
-import { CircleX, TrendingUp } from 'lucide-react';
+import { CheckCircle, CircleX, TrendingUp } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import {
@@ -11,8 +11,42 @@ import {
 } from '@/components/ui/card';
 import { useTranslations } from 'next-intl';
 
-export function SectionCards() {
+interface SectionCardsProps {
+  currentCredits: number;
+  expiringCredits: number;
+  monthlyUsage: number;
+  subscriptionStatus: 'lifetime' | 'subscribed' | 'unsubscribed';
+  planName?: string | null;
+}
+
+export function SectionCards({
+  currentCredits,
+  expiringCredits,
+  monthlyUsage,
+  subscriptionStatus,
+  planName,
+}: SectionCardsProps) {
   const t = useTranslations('Dashboard.cards');
+
+  const getSubscriptionStatusText = () => {
+    if (subscriptionStatus === 'lifetime') {
+      return planName || t('subscriptionStatus.lifetime');
+    }
+    if (subscriptionStatus === 'subscribed') {
+      return planName || t('subscriptionStatus.subscribed');
+    }
+    return t('subscriptionStatus.unsubscribed');
+  };
+
+  const getSubscriptionIcon = () => {
+    if (
+      subscriptionStatus === 'lifetime' ||
+      subscriptionStatus === 'subscribed'
+    ) {
+      return <CheckCircle className="size-4 text-green-500" />;
+    }
+    return <CircleX className="size-4 text-gray-400" />;
+  };
 
   return (
     <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
@@ -20,7 +54,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>{t('currentCredits.title')}</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            50
+            {currentCredits}
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
@@ -39,7 +73,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>{t('expiringSoon.title')}</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            50
+            {expiringCredits}
           </CardTitle>
           <CardAction>
             <Badge variant="outline" className="text-orange-500">
@@ -58,7 +92,7 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>{t('monthlyUsage.title')}</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            0
+            {monthlyUsage}
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
@@ -77,12 +111,10 @@ export function SectionCards() {
         <CardHeader>
           <CardDescription>{t('subscriptionStatus.title')}</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {t('subscriptionStatus.unsubscribed')}
+            {getSubscriptionStatusText()}
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
-              <CircleX className="size-4 text-gray-400" />
-            </Badge>
+            <Badge variant="outline">{getSubscriptionIcon()}</Badge>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">

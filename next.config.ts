@@ -56,6 +56,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'assets.seedream45.org',
       },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
     ],
   },
 };

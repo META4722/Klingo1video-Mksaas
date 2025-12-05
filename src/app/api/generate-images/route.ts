@@ -61,7 +61,7 @@ const withTimeout = <T>(
 
 export async function POST(req: NextRequest) {
   const requestId = Math.random().toString(36).substring(7);
-  const { prompt, provider, modelId } =
+  const { prompt, provider, modelId, size, aspectRatio, referenceImage } =
     (await req.json()) as GenerateImageRequest;
 
   try {
@@ -73,12 +73,17 @@ export async function POST(req: NextRequest) {
 
     const config = providerConfig[provider];
     const startstamp = performance.now();
+
+    // Determine dimension parameter based on provider and request
+    const imageSize = size || DEFAULT_IMAGE_SIZE;
+    const ratio = aspectRatio || DEFAULT_ASPECT_RATIO;
+
     const generatePromise = generateImage({
       model: config.createImageModel(modelId),
       prompt,
       ...(config.dimensionFormat === 'size'
-        ? { size: DEFAULT_IMAGE_SIZE }
-        : { aspectRatio: DEFAULT_ASPECT_RATIO }),
+        ? { size: imageSize }
+        : { aspectRatio: ratio }),
       ...(provider !== 'openai' && {
         seed: Math.floor(Math.random() * 1000000),
       }),
@@ -92,7 +97,7 @@ export async function POST(req: NextRequest) {
         );
       }
       console.log(
-        `Completed image request [requestId=${requestId}, provider=${provider}, model=${modelId}, elapsed=${(
+        `Completed image request [requestId=${requestId}, provider=${provider}, model=${modelId}, size=${imageSize}, elapsed=${(
           (performance.now() - startstamp) / 1000
         ).toFixed(1)}s].`
       );

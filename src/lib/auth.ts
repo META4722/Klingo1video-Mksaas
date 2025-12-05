@@ -54,10 +54,13 @@ export const auth = betterAuth({
     // Use secure cookies in production, insecure in development
     useSecureCookies: process.env.NODE_ENV === 'production',
     // Cross-subdomain cookies (allows cookies to work on both seedream4-5.io and www.seedream4-5.io)
-    crossSubDomainCookies: {
-      enabled: true,
-      domain: 'seedream4-5.io',
-    },
+    // Only enable in production to avoid issues with localhost in development
+    ...(process.env.NODE_ENV === 'production' && {
+      crossSubDomainCookies: {
+        enabled: true,
+        domain: 'seedream4-5.io',
+      },
+    }),
   },
   emailAndPassword: {
     enabled: true,

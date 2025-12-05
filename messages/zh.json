@@ -495,6 +495,9 @@
     "dashboard": {
       "title": "仪表盘"
     },
+    "creation": {
+      "title": "创作"
+    },
     "cards": {
       "currentCredits": {
         "title": "当前积分",
@@ -511,6 +514,8 @@
       "subscriptionStatus": {
         "title": "订阅状态",
         "unsubscribed": "未订阅",
+        "subscribed": "已订阅",
+        "lifetime": "终身会员",
         "description": "无活跃订阅"
       }
     },
@@ -1053,8 +1058,33 @@
       "secondaryButton": "查看画廊"
     },
     "showcase": {
-      "title": "Seedream 4.5 AI创作工作台",
-      "subtitle": "使用先进的AI技术将您的想象力转化为精美图像"
+      "title": "AI图像生成工作台",
+      "subtitle": "使用Seedream 4.5创作令人惊艳的图像",
+      "form": {
+        "promptLabel": "提示词",
+        "promptPlaceholder": "详细描述您想要生成的图像...",
+        "promptHint": "如果生成失败，请尝试切换到其他档位后重试。",
+        "version": "版本",
+        "referenceImage": "上传参考图像",
+        "referenceImageHint": "最多10张图片，每张10MB • JPG、PNG、WebP",
+        "size": "尺寸/比例",
+        "optimization": "优化模式",
+        "watermark": "水印",
+        "watermarkDesc": "为生成的图像添加AI水印",
+        "generate": "生成",
+        "creditCost": "积分"
+      },
+      "results": {
+        "generating": "正在生成您的图像...",
+        "success": "图像生成成功",
+        "error": "生成图像失败",
+        "tryAgain": "重试",
+        "download": "下载",
+        "zoom": "放大",
+        "copyPrompt": "复制提示词",
+        "examples": "试试这些示例",
+        "examplesHint": "点击自动填充并查看结果"
+      }
     }
   },
   "AITextPage": {

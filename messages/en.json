@@ -495,6 +495,9 @@
     "dashboard": {
       "title": "Dashboard"
     },
+    "creation": {
+      "title": "Creation"
+    },
     "cards": {
       "currentCredits": {
         "title": "Current Credits",
@@ -511,6 +514,8 @@
       "subscriptionStatus": {
         "title": "Subscription Status",
         "unsubscribed": "Unsubscribed",
+        "subscribed": "Subscribed",
+        "lifetime": "Lifetime",
         "description": "No active subscription"
       }
     },
@@ -1053,8 +1058,33 @@
       "secondaryButton": "View Gallery"
     },
     "showcase": {
-      "title": "Seedream 4.5 AI Creation Workbench",
-      "subtitle": "Use advanced AI technology to transform your imagination into beautiful images"
+      "title": "AI Image Generation Workbench",
+      "subtitle": "Create stunning images with Seedream 4.5",
+      "form": {
+        "promptLabel": "Prompt",
+        "promptPlaceholder": "Describe your image in detail...",
+        "promptHint": "If generation fails, try switching to another tier and retry.",
+        "version": "Version",
+        "referenceImage": "Upload Reference Image",
+        "referenceImageHint": "Max 10 images, 10MB each • JPG, PNG, WebP",
+        "size": "Size / Aspect",
+        "optimization": "Optimize Mode",
+        "watermark": "Watermark",
+        "watermarkDesc": "Add AI watermark to generated images",
+        "generate": "Generate",
+        "creditCost": "Credits"
+      },
+      "results": {
+        "generating": "Generating your image...",
+        "success": "Image generated successfully",
+        "error": "Failed to generate image",
+        "tryAgain": "Try Again",
+        "download": "Download",
+        "zoom": "Zoom",
+        "copyPrompt": "Copy prompt",
+        "examples": "Try These Examples",
+        "examplesHint": "Click to auto-fill and see results"
+      }
     }
   },
   "AITextPage": {
