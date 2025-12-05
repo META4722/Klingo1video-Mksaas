@@ -76,13 +76,13 @@ export async function POST(req: NextRequest) {
 
     // Determine dimension parameter based on provider and request
     const imageSize = size || DEFAULT_IMAGE_SIZE;
-    const ratio = aspectRatio || DEFAULT_ASPECT_RATIO;
+    const ratio = (aspectRatio || DEFAULT_ASPECT_RATIO) as `${number}:${number}`;
 
     const generatePromise = generateImage({
       model: config.createImageModel(modelId),
       prompt,
       ...(config.dimensionFormat === 'size'
-        ? { size: imageSize }
+        ? { size: imageSize as `${number}x${number}` }
         : { aspectRatio: ratio }),
       ...(provider !== 'openai' && {
         seed: Math.floor(Math.random() * 1000000),
