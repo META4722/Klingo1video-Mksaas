@@ -1,9 +1,9 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { LocaleLink } from '@/i18n/navigation';
 import { Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import { LocaleLink } from '@/i18n/navigation';
 
 const features = [
   {
