@@ -106,18 +106,28 @@ export function SeedreamForm({
   }, [error]);
 
   const handleGenerate = async () => {
+    console.log('Generate button clicked');
+    console.log('Prompt:', prompt);
+    console.log('Prompt length:', prompt.trim().length);
+    console.log('Session:', session?.user ? 'Logged in' : 'Not logged in');
+    console.log('User credits:', userCredits);
+    console.log('Required credits:', CREDIT_COSTS[size]);
+
     // Validate prompt - don't call onGenerationError for validation feedback
     // The UI hints below the button already show these messages
     if (!prompt.trim()) {
+      console.log('Validation failed: Empty prompt');
       return;
     }
 
     if (prompt.trim().length < 10) {
+      console.log('Validation failed: Prompt too short');
       return;
     }
 
     // Check authentication
     if (!session?.user) {
+      console.log('Redirecting to login');
       // Redirect to login with callback to homepage generation section
       router.push(
         '/auth/login?callbackUrl=' + encodeURIComponent('/#generation')
@@ -128,10 +138,12 @@ export function SeedreamForm({
     // Check credits
     const requiredCredits = CREDIT_COSTS[size];
     if (userCredits !== null && userCredits < requiredCredits) {
+      console.log('Validation failed: Insufficient credits');
       return;
     }
 
     // Start generation
+    console.log('Starting generation...');
     onGenerationStart?.();
     await generateImage({
       prompt,
@@ -140,6 +152,7 @@ export function SeedreamForm({
       optimizationMode,
       watermark,
     });
+    console.log('Generation completed');
   };
 
   const isFormValid =
