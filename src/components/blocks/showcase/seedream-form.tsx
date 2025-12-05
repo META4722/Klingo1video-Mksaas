@@ -106,16 +106,13 @@ export function SeedreamForm({
   }, [error]);
 
   const handleGenerate = async () => {
-    // Validate prompt
+    // Validate prompt - don't call onGenerationError for validation feedback
+    // The UI hints below the button already show these messages
     if (!prompt.trim()) {
-      onGenerationError?.('Please enter a prompt to generate an image');
       return;
     }
 
     if (prompt.trim().length < 10) {
-      onGenerationError?.(
-        'Prompt must be at least 10 characters long. Please describe your image in more detail.'
-      );
       return;
     }
 
@@ -131,9 +128,6 @@ export function SeedreamForm({
     // Check credits
     const requiredCredits = CREDIT_COSTS[size];
     if (userCredits !== null && userCredits < requiredCredits) {
-      onGenerationError?.(
-        `Insufficient credits. You need ${requiredCredits} credits but only have ${userCredits}. Please purchase more credits.`
-      );
       return;
     }
 

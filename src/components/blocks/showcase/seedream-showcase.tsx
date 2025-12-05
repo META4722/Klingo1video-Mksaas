@@ -22,8 +22,9 @@ export default function SeedreamShowcase() {
   };
 
   const handleGenerationError = (errorMessage: string) => {
-    // Could add any error handling logic here
-    console.error('Generation error:', errorMessage);
+    // Log validation/generation errors as warnings instead of errors
+    // These are expected user feedback, not system errors
+    console.warn('Generation validation:', errorMessage);
   };
 
   const handleRetry = () => {
