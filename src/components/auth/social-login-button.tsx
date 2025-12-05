@@ -39,7 +39,14 @@ export const SocialLoginButton = ({
   const locale = useLocale();
   // Use absolute URL for Google OAuth callback to ensure proper redirect
   const defaultCallbackUrl = getUrlWithLocale(DEFAULT_LOGIN_REDIRECT, locale);
-  const callbackUrl = propCallbackUrl || paramCallbackUrl || defaultCallbackUrl;
+
+  // Ensure the callback URL is always an absolute URL
+  let callbackUrl = propCallbackUrl || paramCallbackUrl || defaultCallbackUrl;
+  // If the callback URL is a relative path, convert it to absolute
+  if (callbackUrl && !callbackUrl.startsWith('http')) {
+    callbackUrl = getUrlWithLocale(callbackUrl, locale);
+  }
+
   const [isLoading, setIsLoading] = useState<'google' | 'github' | null>(null);
   console.log('social login button, callbackUrl', callbackUrl);
 
