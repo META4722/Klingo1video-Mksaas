@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google OAuth Debug Tool</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #444;
+            font-size: 18px;
+        }
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+        .info-label {
+            font-weight: 600;
+            min-width: 200px;
+            color: #555;
+        }
+        .info-value {
+            flex: 1;
+            font-family: monospace;
+            color: #000;
+            word-break: break-all;
+        }
+        .status-good {
+            color: #10b981;
+            font-weight: bold;
+        }
+        .status-bad {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .status-warning {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        .error {
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .success {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .test-results {
+            margin-top: 20px;
+        }
+        .test-item {
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 4px;
+            border-left: 4px solid #e0e0e0;
+        }
+        .test-item.pass {
+            background: #f0fdf4;
+            border-left-color: #10b981;
+        }
+        .test-item.fail {
+            background: #fef2f2;
+            border-left-color: #ef4444;
+        }
+        .test-item.warning {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Google OAuth 调试工具</h1>
+        <p class="subtitle">检测 Google 登录跳转问题</p>
+
+        <!-- Environment Info -->
+        <div class="section">
+            <h2>📋 环境信息</h2>
+            <div class="info-row">
+                <span class="info-label">当前 URL:</span>
+                <span class="info-value" id="current-url"></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">域名:</span>
+                <span class="info-value" id="hostname"></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">协议:</span>
+                <span class="info-value" id="protocol"></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">端口:</span>
+                <span class="info-value" id="port"></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">User Agent:</span>
+                <span class="info-value" id="user-agent"></span>
+            </div>
+        </div>
+
+        <!-- Cookies -->
+        <div class="section">
+            <h2>🍪 Cookies 检查</h2>
+            <div id="cookies-info"></div>
+        </div>
+
+        <!-- Local Storage -->
+        <div class="section">
+            <h2>💾 Local Storage 检查</h2>
+            <div id="storage-info"></div>
+        </div>
+
+        <!-- Auth API Tests -->
+        <div class="section">
+            <h2>🔐 Better Auth API 测试</h2>
+            <button onclick="testAuthSession()">测试 Session API</button>
+            <button onclick="testAuthCallback()">测试回调路由</button>
+            <button onclick="testGoogleAuthFlow()">测试 Google OAuth 流程</button>
+            <div id="auth-test-results"></div>
+        </div>
+
+        <!-- Network Tests -->
+        <div class="section">
+            <h2>🌐 网络请求测试</h2>
+            <button onclick="testAuthEndpoints()">测试 Auth 端点</button>
+            <button onclick="checkCORS()">检查 CORS 配置</button>
+            <div id="network-test-results"></div>
+        </div>
+
+        <!-- Redirect Tests -->
+        <div class="section">
+            <h2>🔄 重定向测试</h2>
+            <button onclick="testRedirectFlow()">模拟登录后重定向</button>
+            <div id="redirect-test-results"></div>
+        </div>
+
+        <!-- Console Logs -->
+        <div class="section">
+            <h2>📝 控制台日志</h2>
+            <button onclick="clearConsoleLogs()">清空日志</button>
+            <button onclick="exportLogs()">导出日志</button>
+            <div id="console-logs" class="code-block" style="max-height: 300px; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Console log capture
+        const consoleLogs = [];
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+
+        console.log = function(...args) {
+            consoleLogs.push({type: 'log', message: args.join(' '), time: new Date().toISOString()});
+            updateConsoleLogs();
+            originalConsoleLog.apply(console, args);
+        };
+
+        console.error = function(...args) {
+            consoleLogs.push({type: 'error', message: args.join(' '), time: new Date().toISOString()});
+            updateConsoleLogs();
+            originalConsoleError.apply(console, args);
+        };
+
+        console.warn = function(...args) {
+            consoleLogs.push({type: 'warn', message: args.join(' '), time: new Date().toISOString()});
+            updateConsoleLogs();
+            originalConsoleWarn.apply(console, args);
+        };
+
+        function updateConsoleLogs() {
+            const logsDiv = document.getElementById('console-logs');
+            logsDiv.innerHTML = consoleLogs.map(log => {
+                const color = log.type === 'error' ? '#ef4444' : log.type === 'warn' ? '#f59e0b' : '#e2e8f0';
+                return `<div style="color: ${color}; margin: 4px 0;">[${log.time.split('T')[1].split('.')[0]}] ${log.type.toUpperCase()}: ${log.message}</div>`;
+            }).join('');
+            logsDiv.scrollTop = logsDiv.scrollHeight;
+        }
+
+        function clearConsoleLogs() {
+            consoleLogs.length = 0;
+            updateConsoleLogs();
+        }
+
+        function exportLogs() {
+            const logText = consoleLogs.map(log => `[${log.time}] ${log.type.toUpperCase()}: ${log.message}`).join('\n');
+            const blob = new Blob([logText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `auth-debug-logs-${new Date().toISOString()}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize environment info
+        function initEnvironmentInfo() {
+            document.getElementById('current-url').textContent = window.location.href;
+            document.getElementById('hostname').textContent = window.location.hostname;
+            document.getElementById('protocol').textContent = window.location.protocol;
+            document.getElementById('port').textContent = window.location.port || '(default)';
+            document.getElementById('user-agent').textContent = navigator.userAgent;
+
+            console.log('Environment initialized:', {
+                url: window.location.href,
+                hostname: window.location.hostname,
+                protocol: window.location.protocol
+            });
+        }
+
+        // Check cookies
+        function checkCookies() {
+            const cookies = document.cookie.split(';').reduce((acc, cookie) => {
+                const [key, value] = cookie.trim().split('=');
+                if (key) acc[key] = value;
+                return acc;
+            }, {});
+
+            const cookiesDiv = document.getElementById('cookies-info');
+
+            if (Object.keys(cookies).length === 0) {
+                cookiesDiv.innerHTML = '<div class="error">⚠️ 未找到任何 cookies</div>';
+                console.error('No cookies found');
+                return;
+            }
+
+            const authCookies = Object.keys(cookies).filter(key =>
+                key.includes('better-auth') || key.includes('session') || key.includes('LOCALE')
+            );
+
+            let html = '<div class="test-results">';
+
+            // Check for session cookie
+            const hasSessionCookie = cookies['better-auth.session_token'];
+            html += `<div class="test-item ${hasSessionCookie ? 'pass' : 'fail'}">
+                ${hasSessionCookie ? '✅' : '❌'} Session Cookie (better-auth.session_token): ${hasSessionCookie ? '存在' : '不存在'}
+            </div>`;
+
+            // Check for locale cookie
+            const hasLocaleCookie = cookies['NEXT_LOCALE'];
+            html += `<div class="test-item ${hasLocaleCookie ? 'pass' : 'warning'}">
+                ${hasLocaleCookie ? '✅' : '⚠️'} Locale Cookie (NEXT_LOCALE): ${hasLocaleCookie || '未设置'}
+            </div>`;
+
+            // List all auth-related cookies
+            if (authCookies.length > 0) {
+                html += '<div style="margin-top: 15px;"><strong>认证相关 Cookies:</strong></div>';
+                authCookies.forEach(key => {
+                    html += `<div class="info-row">
+                        <span class="info-label">${key}:</span>
+                        <span class="info-value">${cookies[key].substring(0, 50)}...</span>
+                    </div>`;
+                });
+            }
+
+            html += '</div>';
+            cookiesDiv.innerHTML = html;
+
+            console.log('Cookies check:', {
+                total: Object.keys(cookies).length,
+                authCookies: authCookies,
+                hasSession: !!hasSessionCookie
+            });
+        }
+
+        // Check local storage
+        function checkLocalStorage() {
+            const storageDiv = document.getElementById('storage-info');
+            let html = '<div class="test-results">';
+
+            try {
+                const authKeys = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key.includes('auth') || key.includes('session') || key.includes('better')) {
+                        authKeys.push(key);
+                    }
+                }
+
+                if (authKeys.length === 0) {
+                    html += '<div class="info-row"><span class="info-value">未找到认证相关的 Local Storage 数据</span></div>';
+                } else {
+                    authKeys.forEach(key => {
+                        const value = localStorage.getItem(key);
+                        html += `<div class="info-row">
+                            <span class="info-label">${key}:</span>
+                            <span class="info-value">${value.substring(0, 100)}...</span>
+                        </div>`;
+                    });
+                }
+
+                console.log('Local storage check:', {authKeys});
+            } catch (e) {
+                html += `<div class="error">❌ 无法访问 Local Storage: ${e.message}</div>`;
+                console.error('Local storage error:', e);
+            }
+
+            html += '</div>';
+            storageDiv.innerHTML = html;
+        }
+
+        // Test auth session
+        async function testAuthSession() {
+            const resultsDiv = document.getElementById('auth-test-results');
+            resultsDiv.innerHTML = '<div class="loading"></div> 正在测试...';
+            console.log('Testing auth session API...');
+
+            try {
+                const response = await fetch('/api/auth/get-session', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                console.log('Session API response:', data);
+
+                let html = '<div class="test-results">';
+                html += `<div class="test-item ${response.ok ? 'pass' : 'fail'}">
+                    ${response.ok ? '✅' : '❌'} API 响应状态: ${response.status} ${response.statusText}
+                </div>`;
+
+                if (data.session) {
+                    html += '<div class="success">✅ 用户已登录</div>';
+                    html += `<div class="code-block">${JSON.stringify(data, null, 2)}</div>`;
+                } else {
+                    html += '<div class="error">❌ 未找到有效 session</div>';
+                    html += `<div class="code-block">${JSON.stringify(data, null, 2)}</div>`;
+                }
+
+                html += '</div>';
+                resultsDiv.innerHTML = html;
+            } catch (error) {
+                console.error('Session API test failed:', error);
+                resultsDiv.innerHTML = `<div class="error">❌ 请求失败: ${error.message}</div>`;
+            }
+        }
+
+        // Test auth callback
+        async function testAuthCallback() {
+            const resultsDiv = document.getElementById('auth-test-results');
+            resultsDiv.innerHTML = '<div class="loading"></div> 正在测试回调路由...';
+            console.log('Testing Google OAuth callback route...');
+
+            const callbackUrl = '/api/auth/callback/google';
+
+            try {
+                const response = await fetch(callbackUrl, {
+                    method: 'GET',
+                    credentials: 'include',
+                    redirect: 'manual'
+                });
+
+                console.log('Callback route response:', {
+                    status: response.status,
+                    type: response.type,
+                    redirected: response.redirected
+                });
+
+                let html = '<div class="test-results">';
+                html += `<div class="test-item ${response.status < 400 ? 'pass' : 'fail'}">
+                    回调路由状态: ${response.status} (${response.type})
+                </div>`;
+
+                if (response.redirected) {
+                    html += `<div class="info-row">
+                        <span class="info-label">重定向到:</span>
+                        <span class="info-value">${response.url}</span>
+                    </div>`;
+                }
+
+                html += '</div>';
+                resultsDiv.innerHTML = html;
+            } catch (error) {
+                console.error('Callback route test failed:', error);
+                resultsDiv.innerHTML = `<div class="error">❌ 测试失败: ${error.message}</div>`;
+            }
+        }
+
+        // Test Google auth flow
+        function testGoogleAuthFlow() {
+            const resultsDiv = document.getElementById('auth-test-results');
+            console.log('Starting Google OAuth flow test...');
+
+            const baseUrl = `${window.location.protocol}//${window.location.host}`;
+            const callbackUrl = `${baseUrl}/dashboard`;
+            const googleAuthUrl = `/api/auth/signin/google?callbackURL=${encodeURIComponent(callbackUrl)}`;
+
+            let html = '<div class="test-results">';
+            html += '<div class="success">准备测试 Google OAuth 流程</div>';
+            html += `<div class="info-row">
+                <span class="info-label">Base URL:</span>
+                <span class="info-value">${baseUrl}</span>
+            </div>`;
+            html += `<div class="info-row">
+                <span class="info-label">Callback URL:</span>
+                <span class="info-value">${callbackUrl}</span>
+            </div>`;
+            html += `<div class="info-row">
+                <span class="info-label">Google Auth URL:</span>
+                <span class="info-value">${googleAuthUrl}</span>
+            </div>`;
+            html += '<button onclick="startGoogleAuth()" style="margin-top: 15px;">开始 Google 登录测试</button>';
+            html += '</div>';
+
+            resultsDiv.innerHTML = html;
+            console.log('Google auth flow prepared:', {baseUrl, callbackUrl, googleAuthUrl});
+        }
+
+        function startGoogleAuth() {
+            const baseUrl = `${window.location.protocol}//${window.location.host}`;
+            const callbackUrl = `${baseUrl}/dashboard`;
+            const googleAuthUrl = `/api/auth/signin/google?callbackURL=${encodeURIComponent(callbackUrl)}`;
+
+            console.log('Redirecting to Google OAuth:', googleAuthUrl);
+            window.location.href = googleAuthUrl;
+        }
+
+        // Test auth endpoints
+        async function testAuthEndpoints() {
+            const resultsDiv = document.getElementById('network-test-results');
+            resultsDiv.innerHTML = '<div class="loading"></div> 正在测试端点...';
+            console.log('Testing auth endpoints...');
+
+            const endpoints = [
+                '/api/auth/get-session',
+                '/api/auth/signin/google',
+                '/api/auth/callback/google'
+            ];
+
+            let html = '<div class="test-results">';
+
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(endpoint, {
+                        method: 'GET',
+                        credentials: 'include'
+                    });
+
+                    const status = response.status;
+                    const isOk = status < 400;
+
+                    html += `<div class="test-item ${isOk ? 'pass' : 'fail'}">
+                        ${isOk ? '✅' : '❌'} ${endpoint}: ${status} ${response.statusText}
+                    </div>`;
+
+                    console.log(`Endpoint ${endpoint}: ${status}`);
+                } catch (error) {
+                    html += `<div class="test-item fail">
+                        ❌ ${endpoint}: ${error.message}
+                    </div>`;
+                    console.error(`Endpoint ${endpoint} failed:`, error);
+                }
+            }
+
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+
+        // Check CORS
+        async function checkCORS() {
+            const resultsDiv = document.getElementById('network-test-results');
+            resultsDiv.innerHTML = '<div class="loading"></div> 检查 CORS 配置...';
+            console.log('Checking CORS configuration...');
+
+            try {
+                const response = await fetch('/api/auth/get-session', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+
+                const corsHeaders = {
+                    'Access-Control-Allow-Origin': response.headers.get('Access-Control-Allow-Origin'),
+                    'Access-Control-Allow-Credentials': response.headers.get('Access-Control-Allow-Credentials'),
+                    'Access-Control-Allow-Methods': response.headers.get('Access-Control-Allow-Methods')
+                };
+
+                let html = '<div class="test-results">';
+                Object.entries(corsHeaders).forEach(([key, value]) => {
+                    html += `<div class="info-row">
+                        <span class="info-label">${key}:</span>
+                        <span class="info-value">${value || '(未设置)'}</span>
+                    </div>`;
+                });
+                html += '</div>';
+
+                resultsDiv.innerHTML = html;
+                console.log('CORS headers:', corsHeaders);
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="error">❌ CORS 检查失败: ${error.message}</div>`;
+                console.error('CORS check failed:', error);
+            }
+        }
+
+        // Test redirect flow
+        function testRedirectFlow() {
+            const resultsDiv = document.getElementById('redirect-test-results');
+            console.log('Testing redirect flow...');
+
+            const searchParams = new URLSearchParams(window.location.search);
+            const callbackUrl = searchParams.get('callbackUrl');
+            const error = searchParams.get('error');
+
+            let html = '<div class="test-results">';
+
+            if (error) {
+                html += `<div class="error">❌ 发现错误参数: ${error}</div>`;
+                console.error('Error in URL:', error);
+            }
+
+            if (callbackUrl) {
+                html += `<div class="success">✅ 发现回调 URL: ${callbackUrl}</div>`;
+                console.log('Callback URL found:', callbackUrl);
+            } else {
+                html += '<div class="warning">⚠️ URL 中未找到 callbackUrl 参数</div>';
+                console.warn('No callbackUrl in URL');
+            }
+
+            // Test if we can redirect
+            const testCallbackUrl = '/dashboard';
+            html += `<div class="info-row">
+                <span class="info-label">测试重定向到:</span>
+                <span class="info-value">${testCallbackUrl}</span>
+            </div>`;
+            html += '<button onclick="testActualRedirect(\'/dashboard\')">执行重定向测试</button>';
+
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+
+        function testActualRedirect(url) {
+            console.log('Testing actual redirect to:', url);
+            setTimeout(() => {
+                window.location.href = url;
+            }, 1000);
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('Debug tool initialized');
+            initEnvironmentInfo();
+            checkCookies();
+            checkLocalStorage();
+        });
+
+        // Listen for storage changes
+        window.addEventListener('storage', (e) => {
+            console.log('Storage changed:', e.key, e.newValue);
+            checkLocalStorage();
+        });
+    </script>
+</body>
+</html>
