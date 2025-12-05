@@ -43,6 +43,16 @@ export const auth = betterAuth({
     // disable freshness check for user deletion
     freshAge: 0 /* 60 * 60 * 24 */,
   },
+  advanced: {
+    // https://www.better-auth.com/docs/reference/options#advanced
+    // Configure cookie options to ensure proper cross-origin behavior
+    cookieOptions: {
+      // sameSite: 'lax' is more permissive and works better with OAuth redirects
+      sameSite: 'lax',
+      // secure should be true in production (HTTPS), false in development
+      secure: process.env.NODE_ENV === 'production',
+    },
+  },
   emailAndPassword: {
     enabled: true,
     // https://www.better-auth.com/docs/concepts/email#2-require-email-verification
