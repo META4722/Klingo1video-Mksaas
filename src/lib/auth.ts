@@ -26,6 +26,12 @@ import { getBaseUrl, getUrlWithLocaleInCallbackUrl } from './urls/urls';
 export const auth = betterAuth({
   baseURL: getBaseUrl(),
   appName: defaultMessages.Metadata.name,
+  // Trusted origins for OAuth callbacks - required for production
+  trustedOrigins: [
+    'https://seedream4-5.io',
+    'https://www.seedream4-5.io',
+    'http://localhost:3000',
+  ],
   database: drizzleAdapter(await getDb(), {
     provider: 'pg', // or "mysql", "sqlite"
   }),
@@ -47,6 +53,11 @@ export const auth = betterAuth({
     // https://www.better-auth.com/docs/reference/options#advanced
     // Use secure cookies in production, insecure in development
     useSecureCookies: process.env.NODE_ENV === 'production',
+    // Cross-subdomain cookies (allows cookies to work on both seedream4-5.io and www.seedream4-5.io)
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: 'seedream4-5.io',
+    },
   },
   emailAndPassword: {
     enabled: true,
