@@ -53,7 +53,8 @@ export default async function middleware(req: NextRequest) {
   // Check for session cookie existence only (as recommended by Better Auth)
   // https://www.better-auth.com/docs/integrations/next#middleware
   // Don't make API calls in middleware to avoid blocking requests
-  const sessionToken = req.cookies.get('better-auth.session_token');
+  // In production (HTTPS), Better Auth uses __Secure- prefix for cookies
+  const sessionToken = req.cookies.get('__Secure-better-auth.session_token') || req.cookies.get('better-auth.session_token');
   const isLoggedIn = !!sessionToken;
   // console.log('middleware, isLoggedIn', isLoggedIn);
 
