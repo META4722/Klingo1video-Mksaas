@@ -16,6 +16,7 @@ export const PROVIDERS: Record<
     iconPath: '/provider-icons/replicate.svg',
     color: 'from-purple-500 to-blue-500',
     models: [
+      'bytedance/seedream-4.5',
       'black-forest-labs/flux-1.1-pro',
       'black-forest-labs/flux-1.1-pro-ultra',
       'black-forest-labs/flux-dev',

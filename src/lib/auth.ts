@@ -45,13 +45,8 @@ export const auth = betterAuth({
   },
   advanced: {
     // https://www.better-auth.com/docs/reference/options#advanced
-    // Configure cookie options to ensure proper cross-origin behavior
-    cookieOptions: {
-      // sameSite: 'lax' is more permissive and works better with OAuth redirects
-      sameSite: 'lax',
-      // secure should be true in production (HTTPS), false in development
-      secure: process.env.NODE_ENV === 'production',
-    },
+    // Use secure cookies in production, insecure in development
+    useSecureCookies: process.env.NODE_ENV === 'production',
   },
   emailAndPassword: {
     enabled: true,
@@ -120,6 +115,18 @@ export const auth = betterAuth({
       },
       role: {
         type: 'string',
+        required: false,
+      },
+      banned: {
+        type: 'boolean',
+        required: false,
+      },
+      banReason: {
+        type: 'string',
+        required: false,
+      },
+      banExpires: {
+        type: 'date',
         required: false,
       },
     },
