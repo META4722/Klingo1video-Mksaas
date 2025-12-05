@@ -118,6 +118,10 @@ export const auth = betterAuth({
         type: 'string',
         required: false,
       },
+      role: {
+        type: 'string',
+        required: false,
+      },
     },
     // https://www.better-auth.com/docs/concepts/users-accounts#delete-user
     deleteUser: {
