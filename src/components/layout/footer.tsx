@@ -105,7 +105,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://fazier.com/launches/seedream4-5.io"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
                 <img
@@ -121,7 +121,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://www.superlaun.ch/products/1170"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
                 <img
@@ -137,7 +137,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://turbo0.com/item/seedream-4-5"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
                 <img
@@ -151,7 +151,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://www.showmebest.ai"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
                 <img
@@ -167,7 +167,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://twelve.tools"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
                 <img
@@ -183,7 +183,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://dang.ai/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
                 <img
@@ -199,7 +199,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://aistage.net"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 title="AIStage"
                 className="text-xs font-medium hover:text-primary transition-colors px-3 py-1 border border-border rounded-md hover:border-primary"
               >
@@ -210,7 +210,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://startupfa.me/s/seedream-45-2?utm_source=seedream4-5.io"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
                 <img
@@ -226,7 +226,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <a
                 href="https://aiagentsdirectory.com/agent/seedream-45?utm_source=badge&utm_medium=referral&utm_campaign=free_listing&utm_content=seedream-45"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
                 <img
