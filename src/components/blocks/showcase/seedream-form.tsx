@@ -108,12 +108,14 @@ export function SeedreamForm({
   const handleGenerate = async () => {
     // Validate prompt
     if (!prompt.trim()) {
-      onGenerationError?.('Please enter a prompt');
+      onGenerationError?.('Please enter a prompt to generate an image');
       return;
     }
 
     if (prompt.trim().length < 10) {
-      onGenerationError?.('Prompt must be at least 10 characters');
+      onGenerationError?.(
+        'Prompt must be at least 10 characters long. Please describe your image in more detail.'
+      );
       return;
     }
 
@@ -130,7 +132,7 @@ export function SeedreamForm({
     const requiredCredits = CREDIT_COSTS[size];
     if (userCredits !== null && userCredits < requiredCredits) {
       onGenerationError?.(
-        `Insufficient credits. You need ${requiredCredits} credits but only have ${userCredits}.`
+        `Insufficient credits. You need ${requiredCredits} credits but only have ${userCredits}. Please purchase more credits.`
       );
       return;
     }
@@ -286,7 +288,7 @@ export function SeedreamForm({
       {/* Generate Button */}
       <Button
         onClick={handleGenerate}
-        disabled={!isFormValid || isLoading}
+        disabled={isLoading}
         className="w-full gap-2"
         size="lg"
       >
@@ -304,12 +306,20 @@ export function SeedreamForm({
         )}
       </Button>
 
-      {/* Login prompt for non-authenticated users */}
-      {!session?.user && (
+      {/* Validation hints */}
+      {!session?.user ? (
         <p className="text-xs text-center text-muted-foreground">
           Please log in to generate images
         </p>
-      )}
+      ) : !isFormValid && prompt.trim().length > 0 ? (
+        <p className="text-xs text-center text-orange-500">
+          Prompt must be at least 10 characters
+        </p>
+      ) : userCredits !== null && userCredits < requiredCredits ? (
+        <p className="text-xs text-center text-orange-500">
+          Insufficient credits ({userCredits}/{requiredCredits})
+        </p>
+      ) : null}
     </div>
   );
 }
