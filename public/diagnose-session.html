@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 诊断工具</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 30px; }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #444;
+            font-size: 18px;
+        }
+        .status-box {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+        .status-good {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+        }
+        .status-bad {
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+        }
+        .status-warning {
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            color: #92400e;
+        }
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+        .info-label {
+            font-weight: 600;
+            min-width: 200px;
+            color: #555;
+        }
+        .info-value {
+            flex: 1;
+            font-family: monospace;
+            color: #000;
+            word-break: break-all;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover { background: #2563eb; }
+        button.danger {
+            background: #ef4444;
+        }
+        button.danger:hover {
+            background: #dc2626;
+        }
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            max-height: 400px;
+        }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Session 诊断工具</h1>
+        <p class="subtitle">检查 Google 登录后的 Session 状态</p>
+
+        <!-- Session Status -->
+        <div class="section">
+            <h2>📊 当前 Session 状态</h2>
+            <div id="session-status"></div>
+            <button onclick="checkSession()">刷新检查</button>
+            <button onclick="testLogin()" class="danger">测试 Google 登录</button>
+        </div>
+
+        <!-- Cookie Details -->
+        <div class="section">
+            <h2>🍪 Cookie 详情</h2>
+            <div id="cookie-details"></div>
+        </div>
+
+        <!-- Session API Response -->
+        <div class="section">
+            <h2>🔐 Session API 响应</h2>
+            <button onclick="getSessionAPI()">获取 Session</button>
+            <button onclick="clearSession()">清除 Session</button>
+            <div id="session-api-response"></div>
+        </div>
+
+        <!-- Diagnostic Steps -->
+        <div class="section">
+            <h2>🔧 诊断步骤</h2>
+            <div id="diagnostic-steps"></div>
+        </div>
+
+        <!-- Console Logs -->
+        <div class="section">
+            <h2>📝 诊断日志</h2>
+            <button onclick="exportDiagnosticLog()">导出日志</button>
+            <div id="diagnostic-log" class="code-block"></div>
+        </div>
+    </div>
+
+    <script>
+        const logs = [];
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toISOString().split('T')[1].split('.')[0];
+            const color = type === 'error' ? '#ef4444' : type === 'success' ? '#10b981' : type === 'warning' ? '#f59e0b' : '#e2e8f0';
+            logs.push({timestamp, message, type});
+
+            const logDiv = document.getElementById('diagnostic-log');
+            logDiv.innerHTML = logs.map(l =>
+                `<div style="color: ${l.type === 'error' ? '#ef4444' : l.type === 'success' ? '#10b981' : l.type === 'warning' ? '#f59e0b' : '#e2e8f0'};">[${l.timestamp}] ${l.message}</div>`
+            ).join('');
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function getCookieValue(name) {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [key, value] = cookie.trim().split('=');
+                if (key === name) return decodeURIComponent(value);
+            }
+            return null;
+        }
+
+        function getAllAuthCookies() {
+            const cookies = document.cookie.split(';');
+            const authCookies = {};
+            for (let cookie of cookies) {
+                const [key, value] = cookie.trim().split('=');
+                if (key.includes('better-auth') || key.includes('session') || key.includes('LOCALE')) {
+                    authCookies[key] = decodeURIComponent(value);
+                }
+            }
+            return authCookies;
+        }
+
+        async function checkSession() {
+            log('开始检查 Session...', 'info');
+
+            const statusDiv = document.getElementById('session-status');
+            const cookieDiv = document.getElementById('cookie-details');
+
+            // Check session cookie
+            const sessionToken = getCookieValue('better-auth.session_token');
+            log(`Session Token Cookie: ${sessionToken ? '存在' : '不存在'}`, sessionToken ? 'success' : 'error');
+
+            if (sessionToken) {
+                statusDiv.innerHTML = `
+                    <div class="status-box status-good">
+                        ✅ Session Cookie 存在
+                        <div class="info-row" style="margin-top: 10px;">
+                            <span class="info-label">Token 前缀:</span>
+                            <span class="info-value">${sessionToken.substring(0, 30)}...</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="status-box status-bad">
+                        ❌ 未找到 Session Cookie
+                        <div style="margin-top: 10px; font-weight: normal;">
+                            这可能是因为：<br>
+                            1. 你还没有登录<br>
+                            2. Google 登录成功但 cookie 没有设置<br>
+                            3. Cookie 已过期或被清除<br>
+                            4. Cookie 域名设置不正确
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Show all auth cookies
+            const allCookies = getAllAuthCookies();
+            log(`找到 ${Object.keys(allCookies).length} 个认证相关 Cookie`, 'info');
+
+            let cookieHtml = '<h3>所有认证相关 Cookies:</h3>';
+            if (Object.keys(allCookies).length === 0) {
+                cookieHtml += '<div class="status-box status-warning">⚠️ 未找到任何认证相关的 Cookie</div>';
+                log('未找到任何认证相关的 Cookie', 'warning');
+            } else {
+                for (const [key, value] of Object.entries(allCookies)) {
+                    cookieHtml += `
+                        <div class="info-row">
+                            <span class="info-label">${key}:</span>
+                            <span class="info-value">${value.substring(0, 50)}${value.length > 50 ? '...' : ''}</span>
+                        </div>
+                    `;
+                    log(`Cookie: ${key} = ${value.substring(0, 30)}...`, 'info');
+                }
+            }
+            cookieDiv.innerHTML = cookieHtml;
+
+            // Try to get session from API
+            await getSessionAPI();
+        }
+
+        async function getSessionAPI() {
+            log('正在调用 Session API...', 'info');
+            const responseDiv = document.getElementById('session-api-response');
+            responseDiv.innerHTML = '<div class="loading"></div> 正在获取...';
+
+            try {
+                const response = await fetch('/api/auth/get-session', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                log(`Session API 响应状态: ${response.status}`, response.ok ? 'success' : 'error');
+
+                const data = await response.json();
+                log(`Session API 响应数据: ${JSON.stringify(data)}`, 'info');
+
+                if (data.session && data.user) {
+                    responseDiv.innerHTML = `
+                        <div class="status-box status-good">
+                            ✅ Session 有效 - 用户已登录
+                        </div>
+                        <h3>用户信息:</h3>
+                        <div class="info-row">
+                            <span class="info-label">用户 ID:</span>
+                            <span class="info-value">${data.user.id}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">邮箱:</span>
+                            <span class="info-value">${data.user.email}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">名称:</span>
+                            <span class="info-value">${data.user.name || '(未设置)'}</span>
+                        </div>
+                        <h3>完整响应:</h3>
+                        <div class="code-block">${JSON.stringify(data, null, 2)}</div>
+                    `;
+                    log(`用户已登录: ${data.user.email}`, 'success');
+
+                    // Run diagnostic
+                    runDiagnostic(true, data);
+                } else {
+                    responseDiv.innerHTML = `
+                        <div class="status-box status-bad">
+                            ❌ 未找到有效 Session
+                        </div>
+                        <h3>API 响应:</h3>
+                        <div class="code-block">${JSON.stringify(data, null, 2)}</div>
+                    `;
+                    log('未找到有效 Session', 'error');
+
+                    // Run diagnostic
+                    runDiagnostic(false, data);
+                }
+            } catch (error) {
+                log(`Session API 调用失败: ${error.message}`, 'error');
+                responseDiv.innerHTML = `
+                    <div class="status-box status-bad">
+                        ❌ 请求失败: ${error.message}
+                    </div>
+                `;
+                runDiagnostic(false, null);
+            }
+        }
+
+        async function clearSession() {
+            log('正在清除 Session...', 'warning');
+
+            try {
+                const response = await fetch('/api/auth/sign-out', {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+
+                log(`清除 Session 响应: ${response.status}`, response.ok ? 'success' : 'error');
+
+                if (response.ok) {
+                    alert('Session 已清除，页面将刷新');
+                    window.location.reload();
+                } else {
+                    alert('清除 Session 失败');
+                }
+            } catch (error) {
+                log(`清除 Session 失败: ${error.message}`, 'error');
+                alert(`清除失败: ${error.message}`);
+            }
+        }
+
+        function testLogin() {
+            log('准备测试 Google 登录...', 'info');
+            const baseUrl = `${window.location.protocol}//${window.location.host}`;
+            const returnUrl = `${baseUrl}/diagnose-session.html`;
+
+            log(`登录后将返回: ${returnUrl}`, 'info');
+
+            // Redirect to login page with callback to this diagnostic page
+            window.location.href = `/auth/login?callbackUrl=${encodeURIComponent('/diagnose-session.html')}`;
+        }
+
+        function runDiagnostic(hasSession, sessionData) {
+            log('运行诊断检查...', 'info');
+            const diagDiv = document.getElementById('diagnostic-steps');
+
+            const sessionToken = getCookieValue('better-auth.session_token');
+            const allCookies = getAllAuthCookies();
+
+            let html = '<h3>诊断结果:</h3>';
+
+            // Step 1: Check cookie
+            html += `<div class="info-row" style="background: ${sessionToken ? '#d1fae5' : '#fee2e2'};">
+                <span class="info-label">1. Session Cookie:</span>
+                <span class="info-value">${sessionToken ? '✅ 存在' : '❌ 不存在'}</span>
+            </div>`;
+
+            // Step 2: Check API
+            html += `<div class="info-row" style="background: ${hasSession ? '#d1fae5' : '#fee2e2'};">
+                <span class="info-label">2. Session API:</span>
+                <span class="info-value">${hasSession ? '✅ 返回有效 Session' : '❌ 未返回有效 Session'}</span>
+            </div>`;
+
+            // Step 3: Check cookie domain
+            const currentDomain = window.location.hostname;
+            html += `<div class="info-row">
+                <span class="info-label">3. 当前域名:</span>
+                <span class="info-value">${currentDomain}</span>
+            </div>`;
+
+            // Step 4: Diagnosis
+            html += '<h3 style="margin-top: 20px;">问题分析:</h3>';
+
+            if (!sessionToken && !hasSession) {
+                html += `
+                    <div class="status-box status-bad">
+                        <strong>问题: Session Cookie 和 API 都显示未登录</strong><br><br>
+                        <strong>可能原因:</strong><br>
+                        1. 你确实还没有登录<br>
+                        2. Google OAuth 回调失败<br>
+                        3. Better Auth 没有正确创建 Session<br><br>
+                        <strong>解决方案:</strong><br>
+                        1. 点击上面的 "测试 Google 登录" 按钮<br>
+                        2. 完成 Google 登录流程<br>
+                        3. 查看是否能正确返回此页面<br>
+                        4. 检查浏览器控制台是否有错误<br>
+                        5. 查看网络请求中的 /api/auth/callback/google 响应
+                    </div>
+                `;
+                log('诊断结果: 未登录或登录失败', 'error');
+            } else if (sessionToken && !hasSession) {
+                html += `
+                    <div class="status-box status-warning">
+                        <strong>问题: Cookie 存在但 API 返回无效 Session</strong><br><br>
+                        <strong>可能原因:</strong><br>
+                        1. Session Token 已过期<br>
+                        2. Session 在数据库中不存在<br>
+                        3. Token 格式错误<br><br>
+                        <strong>解决方案:</strong><br>
+                        1. 尝试重新登录<br>
+                        2. 检查数据库中的 session 表<br>
+                        3. 查看服务器端日志
+                    </div>
+                `;
+                log('诊断结果: Cookie 存在但 Session 无效', 'warning');
+            } else if (!sessionToken && hasSession) {
+                html += `
+                    <div class="status-box status-warning">
+                        <strong>异常: API 返回 Session 但 Cookie 不存在</strong><br><br>
+                        这是一个异常情况，请检查：<br>
+                        1. Cookie 设置的域名是否正确<br>
+                        2. 是否被浏览器隐私设置阻止<br>
+                        3. 是否有其他扩展清除了 Cookie
+                    </div>
+                `;
+                log('诊断结果: 异常 - API 有效但 Cookie 不存在', 'error');
+            } else {
+                html += `
+                    <div class="status-box status-good">
+                        <strong>✅ Session 完全正常</strong><br><br>
+                        Cookie 和 API 都显示你已登录。<br>
+                        用户: ${sessionData.user.email}<br><br>
+                        如果你无法访问 Dashboard，可能是：<br>
+                        1. Dashboard 路由配置问题<br>
+                        2. 权限验证问题<br>
+                        3. Middleware 配置问题
+                    </div>
+                `;
+                log(`诊断结果: Session 完全正常 - ${sessionData.user.email}`, 'success');
+            }
+
+            diagDiv.innerHTML = html;
+        }
+
+        function exportDiagnosticLog() {
+            const logText = logs.map(l => `[${l.timestamp}] [${l.type.toUpperCase()}] ${l.message}`).join('\n');
+            const allInfo = `
+Session Diagnostic Log
+======================
+Time: ${new Date().toISOString()}
+URL: ${window.location.href}
+Domain: ${window.location.hostname}
+
+Cookies:
+${JSON.stringify(getAllAuthCookies(), null, 2)}
+
+Logs:
+${logText}
+`;
+
+            const blob = new Blob([allInfo], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `session-diagnostic-${new Date().toISOString()}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            log('诊断日志已导出', 'success');
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            log('Session 诊断工具已加载', 'info');
+            log(`当前 URL: ${window.location.href}`, 'info');
+            checkSession();
+        });
+    </script>
+</body>
+</html>
