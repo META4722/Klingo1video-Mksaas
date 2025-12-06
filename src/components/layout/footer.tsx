@@ -234,17 +234,17 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
 
               {/* AI Agents Directory */}
               <a
-                href="https://aiagentsdirectory.com/agent/seedream-45?utm_source=badge&utm_medium=referral&utm_campaign=free_listing&utm_content=seedream-45"
+                href="https://aiagentsdirectory.com/agent/kling-o1-video-generator?utm_source=badge&utm_medium=referral&utm_campaign=free_listing&utm_content=kling-o1-video-generator"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="transition-opacity hover:opacity-80"
               >
                 <Image
                   src="https://aiagentsdirectory.com/featured-badge.svg?v=2024"
-                  alt="Kling O1 - Featured AI Agent on AI Agents Directory"
-                  width={90}
-                  height={22}
-                  className="h-6 w-auto"
+                  alt="Kling O1 Video Generator - Featured AI Agent on AI Agents Directory"
+                  width={200}
+                  height={50}
+                  className="h-[50px] w-auto"
                   unoptimized
                 />
               </a>
