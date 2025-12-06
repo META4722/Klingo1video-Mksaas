@@ -21,7 +21,7 @@ export const websiteConfig: WebsiteConfig = {
       logoDark: '/logo-dark.png',
     },
     social: {
-      // Social media links hidden for Seedream 4.5
+      // Social media links hidden for Kling O1
       // github: 'https://github.com/MkSaaSHQ',
       // twitter: 'https://mksaas.link/twitter',
       // blueSky: 'https://mksaas.link/bsky',
