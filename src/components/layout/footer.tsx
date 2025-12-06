@@ -102,26 +102,43 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
 
             {/* Badges Grid */}
             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-              {/* Fazier */}
+              {/* Turbo0 */}
               <a
-                href="https://fazier.com/launches/seedream4-5.io"
+                href="https://turbo0.com/item/kling-o1-video-generator"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="transition-opacity hover:opacity-80"
               >
                 <Image
-                  src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light"
+                  src="https://img.turbo0.com/badge-listed-light.svg"
+                  alt="Listed on Turbo0"
+                  width={120}
+                  height={54}
+                  className="h-[54px] w-auto"
+                  unoptimized
+                />
+              </a>
+
+              {/* Fazier */}
+              <a
+                href="https://fazier.com/launches/klingo1video.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-opacity hover:opacity-80"
+              >
+                <Image
+                  src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
                   width={120}
                   height={30}
                   alt="Fazier badge"
-                  className="h-6 w-auto dark:brightness-90"
+                  className="h-[30px] w-auto dark:brightness-90"
                   unoptimized
                 />
               </a>
 
               {/* Super Launch */}
               <a
-                href="https://www.superlaun.ch/products/1170"
+                href="https://www.superlaun.ch/products/1179"
                 target="_blank"
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
@@ -131,24 +148,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                   alt="Featured on Super Launch"
                   width={60}
                   height={60}
-                  className="h-6 w-auto"
-                  unoptimized
-                />
-              </a>
-
-              {/* Turbo0 */}
-              <a
-                href="https://turbo0.com/item/seedream-4-5"
-                target="_blank"
-                rel="noopener"
-                className="transition-opacity hover:opacity-80"
-              >
-                <Image
-                  src="https://img.turbo0.com/badge-listed-light.svg"
-                  alt="Listed on Turbo0"
-                  width={120}
-                  height={30}
-                  className="h-6 w-auto"
+                  className="h-[60px] w-auto"
                   unoptimized
                 />
               </a>

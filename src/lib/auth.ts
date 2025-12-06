@@ -28,8 +28,8 @@ export const auth = betterAuth({
   appName: defaultMessages.Metadata.name,
   // Trusted origins for OAuth callbacks - required for production
   trustedOrigins: [
-    'https://seedream4-5.io',
-    'https://www.seedream4-5.io',
+    'https://klingo1video.io',
+    'https://www.klingo1video.io',
     'http://localhost:3000',
   ],
   database: drizzleAdapter(await getDb(), {
@@ -53,12 +53,12 @@ export const auth = betterAuth({
     // https://www.better-auth.com/docs/reference/options#advanced
     // Use secure cookies in production, insecure in development
     useSecureCookies: process.env.NODE_ENV === 'production',
-    // Cross-subdomain cookies (allows cookies to work on both seedream4-5.io and www.seedream4-5.io)
+    // Cross-subdomain cookies (allows cookies to work on both klingo1video.io and www.klingo1video.io)
     // Only enable in production to avoid issues with localhost in development
     ...(process.env.NODE_ENV === 'production' && {
       crossSubDomainCookies: {
         enabled: true,
-        domain: 'seedream4-5.io',
+        domain: 'klingo1video.io',
       },
     }),
   },
