@@ -1,4 +1,3 @@
-import { Ripple } from '@/components/magicui/ripple';
 import { AnimatedGroup } from '@/components/tailark/motion/animated-group';
 import { TextEffect } from '@/components/tailark/motion/text-effect';
 import { Button } from '@/components/ui/button';
@@ -34,11 +33,28 @@ export default function HeroSection() {
 
   return (
     <>
-      <main id="hero" className="overflow-hidden">
+      <main id="hero" className="overflow-hidden relative">
+        {/* Video Background */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background z-10" />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-30"
+          >
+            <source
+              src="/videos/Marco_-_Kling_O1_is_so_dope_I_added_a_reference_subject_and_a_reference_en..._0r7xol.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+
         {/* background, light shadows on top of the hero section */}
         <div
           aria-hidden
-          className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block"
+          className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block pointer-events-none"
         >
           <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
           <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
@@ -48,7 +64,6 @@ export default function HeroSection() {
         <section>
           <div className="relative pt-12">
             <div className="mx-auto max-w-7xl px-6">
-              <Ripple />
 
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
                 {/* introduction */}
