@@ -77,8 +77,8 @@ export const websiteConfig: WebsiteConfig = {
   },
   mail: {
     provider: 'resend',
-    fromEmail: 'Seedream 4.5 <support@seedream4-5.io>',
-    supportEmail: 'Seedream 4.5 <support@seedream4-5.io>',
+    fromEmail: 'Kling O1 <support@klingo1video.io>',
+    supportEmail: 'Kling O1 <support@klingo1video.io>',
   },
   newsletter: {
     enable: true,

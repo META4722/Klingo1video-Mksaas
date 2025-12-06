@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "name": "Seedream 4.5",
-    "title": "Seedream 4.5 - AI Image Editing & Generation Platform",
-    "description": "Create and edit stunning images with Seedream 4.5. Advanced AI-powered image generation with high-fidelity outputs, consistent character rendering, and precise typography control. Professional image generator and photo editor combined."
+    "name": "Kling O1",
+    "title": "Kling O1 Video Generator - Free AI Video Creation",
+    "description": "Create stunning videos with Kling O1. Advanced AI delivers professional results in seconds. Transform text into photorealistic videos up to 1080p resolution."
   },
   "Common": {
     "premium": "Premium",
@@ -142,11 +142,11 @@
     "backToHome": "Back to home"
   },
   "AboutPage": {
-    "title": "About Seedream 4.5",
-    "description": "Seedream 4.5 is ByteDance's latest iteration of advanced AI image generation and editing model, released on December 3, 2025. It represents a major upgrade focusing on professional-grade tools for creators, designers, and marketers.",
-    "authorName": "Seedream 4.5",
-    "authorBio": "AI Image Generation & Editing by ByteDance",
-    "introduction": "Seedream 4.5 is the latest iteration of ByteDance's (the company behind TikTok) advanced AI image generation and editing model. It integrates text-to-image generation and image editing into a unified system, emphasizing cinematic realism, precise prompt adherence, and high-fidelity outputs suitable for production workflows.",
+    "title": "About Kling O1",
+    "description": "Kling O1 is the world's first unified multimodal video foundation model, combining text-to-video, image-to-video, and video editing in one seamless system.",
+    "authorName": "Kling O1",
+    "authorBio": "World's First Unified Multimodal Video Foundation Model",
+    "introduction": "Kling O1 is the world's first unified multimodal video foundation model, developed by Kuaishou. Launched on December 1, 2025, it combines text-to-video, image-to-video, and video editing capabilities into a single seamless system. Creates cinematic 1080p videos with natural physics simulation, multilingual audio-visual alignment, and professional-grade motion consistency. Perfect for filmmakers, marketers, content creators, and VFX artists.",
     "talkWithMe": "Contact us",
     "followMe": "Follow us"
   },
@@ -296,7 +296,7 @@
     "previousPage": "Previous",
     "nextPage": "Next",
     "chooseLanguage": "Select language",
-    "title": "Seedream 4.5 Docs",
+    "title": "Kling O1 Docs",
     "homepage": "Homepage"
   },
   "PremiumContent": {
@@ -449,7 +449,7 @@
       }
     },
     "footer": {
-      "tagline": "Create stunning images with AI-powered generation and editing tools",
+      "tagline": "Create stunning videos with AI-powered generation tools",
       "product": {
         "title": "Product",
         "items": {
@@ -813,12 +813,12 @@
     }
   },
   "HomePage": {
-    "title": "Seedream 4.5",
-    "description": "Advanced AI image generation and editing model by ByteDance",
+    "title": "Kling O1",
+    "description": "Advanced AI video generation platform",
     "hero": {
-      "title": "Create Stunning Images with AI-Powered Precision",
-      "description": "Seedream 4.5 brings professional-grade AI image generation to your fingertips. Generate photorealistic images, edit with pixel-perfect control, and bring your creative vision to life with cinematic quality outputs up to 4K resolution.",
-      "introduction": "Powered by ByteDance AI",
+      "title": "Create Stunning Videos with AI in Seconds",
+      "description": "Kling O1 transforms your ideas into professional-quality videos instantly. Generate photorealistic videos from text or images, with advanced AI that delivers exceptional results up to 1080p resolution.",
+      "introduction": "Powered by Advanced AI",
       "primary": "Start Creating Free",
       "secondary": "View Examples"
     },
@@ -936,24 +936,24 @@
       "subtitle": "Everything you need to know",
       "items": {
         "item-1": {
-          "question": "What image formats does Seedream 4.5 support?",
-          "answer": "Seedream 4.5 supports all major formats including PNG, JPEG, WebP, and TIFF. You can generate images up to 4096×4096 resolution and export in your preferred format."
+          "question": "What video formats does Kling O1 support?",
+          "answer": "Kling O1 generates videos in MP4 format with resolutions up to 1080p. You can export your videos in various aspect ratios suitable for different platforms."
         },
         "item-2": {
           "question": "How do credits work?",
-          "answer": "Each image generation or edit consumes credits based on complexity and resolution. Free users get 50 credits monthly, Pro users get 1000 credits, and you can purchase additional credit packages anytime."
+          "answer": "Each video generation consumes credits based on length and resolution. Free users get 50 credits monthly, Pro users get 1000 credits, and you can purchase additional credit packages anytime."
         },
         "item-3": {
-          "question": "Can I use generated images commercially?",
-          "answer": "Yes! All images you create with Seedream 4.5 are yours to use for commercial purposes. Pro and Lifetime users get extended licensing rights."
+          "question": "Can I use generated videos commercially?",
+          "answer": "Yes! All videos you create with Kling O1 are yours to use for commercial purposes. Pro and Lifetime users get extended licensing rights."
         },
         "item-4": {
           "question": "What's the refund policy?",
-          "answer": "We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied with Seedream 4.5, contact our support team for a full refund."
+          "answer": "We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied with Kling O1, contact our support team for a full refund."
         },
         "item-5": {
           "question": "Need help or have questions?",
-          "answer": "Our support team is here to help! Contact us at support@seedream4-5.io or visit our documentation for tutorials and guides."
+          "answer": "Our support team is here to help! Contact us at support@klingo1video.io or visit our documentation for tutorials and guides."
         }
       }
     },
@@ -1058,8 +1058,8 @@
       "secondaryButton": "View Gallery"
     },
     "showcase": {
-      "title": "AI Image Generation Workbench",
-      "subtitle": "Create stunning images with Seedream 4.5",
+      "title": "AI Video Generation Workbench",
+      "subtitle": "Create stunning videos with Kling O1",
       "form": {
         "promptLabel": "Prompt",
         "promptPlaceholder": "Describe your image in detail...",
@@ -1137,8 +1137,8 @@
     }
   },
   "AIImagePage": {
-    "title": "AI Image Generation",
-    "description": "Create stunning images with Seedream 4.5's advanced AI image generation tools"
+    "title": "AI Video Generation",
+    "description": "Create stunning videos with Kling O1's advanced AI video generation tools"
   },
   "AIChatPage": {
     "title": "AI Chat",

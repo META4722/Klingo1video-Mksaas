@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "name": "Seedream 4.5",
-    "title": "Seedream 4.5 - AI图像编辑与生成平台",
-    "description": "使用Seedream 4.5创建和编辑精美图像。先进的AI图像生成技术，高保真输出，一致的角色渲染，精确的排版控制。专业的图像生成器和照片编辑器合二为一。"
+    "name": "Kling O1",
+    "title": "Kling O1视频生成器 - 免费AI视频创作",
+    "description": "使用Kling O1创建精美视频。先进的AI技术在数秒内提供专业效果。将文本转换为高达1080p分辨率的逼真视频。"
   },
   "Common": {
     "premium": "付费文章",
@@ -142,11 +142,11 @@
     "backToHome": "返回首页"
   },
   "AboutPage": {
-    "title": "关于Seedream 4.5",
-    "description": "Seedream 4.5是字节跳动先进AI图像生成与编辑模型的最新版本，于2025年12月3日发布。它相较于前代进行了重大升级，专注于为创作者、设计师和市场人员打造的专业级工具。",
-    "authorName": "Seedream 4.5",
-    "authorBio": "字节跳动AI图像生成与编辑",
-    "introduction": "Seedream 4.5是字节跳动（TikTok背后公司）先进AI图像生成与编辑模型的最新版本。该模型将文本生成图像和图像编辑整合为统一系统，强调电影般的真实感、精准的提示遵循以及适合制作工作流程的高保真输出。",
+    "title": "关于Kling O1",
+    "description": "Kling O1是全球首个统一的多模态视频基础模型，将文本生成视频、图像生成视频和视频编辑融为一体。",
+    "authorName": "Kling O1",
+    "authorBio": "全球首个统一多模态视频基础模型",
+    "introduction": "Kling O1是由快手开发的全球首个统一多模态视频基础模型，于2025年12月1日发布。它将文本生成视频、图像生成视频和视频编辑功能集成到一个无缝系统中。可创建电影级1080p视频，具备自然物理模拟、多语言音视频对齐和专业级动作一致性。非常适合电影制作人、营销人员、内容创作者和视觉特效艺术家。",
     "talkWithMe": "联系我们",
     "followMe": "关注我们"
   },
@@ -296,7 +296,7 @@
     "previousPage": "上一页",
     "nextPage": "下一页",
     "chooseLanguage": "选择语言",
-    "title": "Seedream 4.5文档",
+    "title": "Kling O1文档",
     "homepage": "首页"
   },
   "PremiumContent": {
@@ -449,7 +449,7 @@
       }
     },
     "footer": {
-      "tagline": "使用AI驱动的生成和编辑工具创建精美图像",
+      "tagline": "使用AI驱动的生成工具创建精美视频",
       "product": {
         "title": "产品",
         "items": {
@@ -813,12 +813,12 @@
     }
   },
   "HomePage": {
-    "title": "Seedream 4.5",
-    "description": "字节跳动先进的AI图像生成与编辑模型",
+    "title": "Kling O1",
+    "description": "先进的AI视频生成平台",
     "hero": {
-      "title": "用AI驱动的精准创作令人惊叹的图像",
-      "description": "Seedream 4.5将专业级AI图像生成带到您的指尖。生成逼真的图像，精确控制每个像素进行编辑，用电影级质量输出实现您的创意愿景，分辨率高达4K。",
-      "introduction": "由字节跳动AI驱动",
+      "title": "用AI在数秒内创作精美视频",
+      "description": "Kling O1将您的想法瞬间转化为专业品质的视频。从文本或图像生成逼真视频，先进的AI技术提供高达1080p分辨率的卓越效果。",
+      "introduction": "由先进AI驱动",
       "primary": "免费开始创作",
       "secondary": "查看示例"
     },
@@ -936,24 +936,24 @@
       "subtitle": "您需要了解的一切",
       "items": {
         "item-1": {
-          "question": "Seedream 4.5支持哪些图像格式？",
-          "answer": "Seedream 4.5支持所有主要格式，包括PNG、JPEG、WebP和TIFF。您可以生成最高4096×4096分辨率的图像，并以您喜欢的格式导出。"
+          "question": "Kling O1支持哪些视频格式？",
+          "answer": "Kling O1以MP4格式生成视频，分辨率高达1080p。您可以导出各种适合不同平台的视频宽高比。"
         },
         "item-2": {
           "question": "积分是如何运作的？",
-          "answer": "每次图像生成或编辑都会根据复杂度和分辨率消耗积分。免费用户每月获得50个积分，专业版用户获得1000个积分，您可以随时购买额外的积分包。"
+          "answer": "每次视频生成都会根据时长和分辨率消耗积分。免费用户每月获得50个积分，专业版用户获得1000个积分，您可以随时购买额外的积分包。"
         },
         "item-3": {
-          "question": "我可以将生成的图像用于商业用途吗？",
-          "answer": "可以！您使用Seedream 4.5创建的所有图像都归您所有，可用于商业用途。专业版和终身版用户可获得扩展的许可权限。"
+          "question": "我可以将生成的视频用于商业用途吗？",
+          "answer": "可以！您使用Kling O1创建的所有视频都归您所有，可用于商业用途。专业版和终身版用户可获得扩展的许可权限。"
         },
         "item-4": {
           "question": "退款政策是什么？",
-          "answer": "我们为所有付费计划提供30天退款保证。如果您对Seedream 4.5不满意，请联系我们的支持团队获得全额退款。"
+          "answer": "我们为所有付费计划提供30天退款保证。如果您对Kling O1不满意，请联系我们的支持团队获得全额退款。"
         },
         "item-5": {
           "question": "需要帮助或有疑问？",
-          "answer": "我们的支持团队随时为您服务！请通过support@seedream4-5.io联系我们或访问我们的文档查看教程和指南。"
+          "answer": "我们的支持团队随时为您服务！请通过support@klingo1video.io联系我们或访问我们的文档查看教程和指南。"
         }
       }
     },
@@ -1058,8 +1058,8 @@
       "secondaryButton": "查看画廊"
     },
     "showcase": {
-      "title": "AI图像生成工作台",
-      "subtitle": "使用Seedream 4.5创作令人惊艳的图像",
+      "title": "AI视频生成工作台",
+      "subtitle": "使用Kling O1创作令人惊艳的视频",
       "form": {
         "promptLabel": "提示词",
         "promptPlaceholder": "详细描述您想要生成的图像...",
@@ -1137,8 +1137,8 @@
     }
   },
   "AIImagePage": {
-    "title": "AI 图片",
-    "description": "MkSaaS 让您在几天内轻松构建您的 AI SaaS，简单且毫不费力"
+    "title": "AI视频生成",
+    "description": "使用Kling O1先进的AI视频生成工具创作精美视频"
   },
   "AIChatPage": {
     "title": "AI 聊天",
