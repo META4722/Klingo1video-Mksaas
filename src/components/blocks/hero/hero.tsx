@@ -28,22 +28,20 @@ const transitionVariants = {
 export default function HeroSection() {
   const t = useTranslations('HomePage.hero');
   const linkIntroduction = '/about';
-  const linkPrimary = '/auth/register';
+  const linkPrimary = '#generation';
   const linkSecondary = '/ai/image';
 
   return (
     <>
-      <main id="hero" className="overflow-hidden relative">
+      <main id="hero" className="overflow-hidden relative min-h-[85vh] md:min-h-[90vh]">
         {/* Video Background */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          {/* Lighter gradient overlay for better video visibility */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/60 z-10" />
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-50"
+            className="absolute inset-0 w-full h-full object-cover"
           >
             <source
               src="/videos/Marco_-_Kling_O1_is_so_dope_I_added_a_reference_subject_and_a_reference_en..._0r7xol.mp4"
@@ -62,41 +60,18 @@ export default function HeroSection() {
           <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
         </div>
 
-        <section>
-          <div className="relative pt-12">
+        <section className="flex items-center min-h-[85vh] md:min-h-[90vh]">
+          <div className="relative pt-12 pb-16 w-full">
             <div className="mx-auto max-w-7xl px-6">
 
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-                {/* introduction */}
-                <AnimatedGroup variants={transitionVariants}>
-                  <LocaleLink
-                    href={linkIntroduction}
-                    className="hover:bg-accent group mx-auto flex w-fit items-center gap-2 rounded-full border p-1 pl-4"
-                  >
-                    <span className="text-foreground text-sm">
-                      {t('introduction')}
-                    </span>
-
-                    <div className="size-6 overflow-hidden rounded-full duration-500">
-                      <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
-                        <span className="flex size-6">
-                          <ArrowRight className="m-auto size-3" />
-                        </span>
-                        <span className="flex size-6">
-                          <ArrowRight className="m-auto size-3" />
-                        </span>
-                      </div>
-                    </div>
-                  </LocaleLink>
-                </AnimatedGroup>
-
                 {/* title */}
                 <TextEffect
                   per="line"
                   preset="fade-in-blur"
                   speedSegment={0.3}
                   as="h1"
-                  className="mt-8 text-balance text-5xl font-bricolage-grotesque lg:mt-16 xl:text-[5rem]"
+                  className="mt-8 text-balance text-6xl font-black font-bricolage-grotesque lg:mt-16 xl:text-[7rem] text-white"
                 >
                   {t('title')}
                 </TextEffect>
@@ -108,7 +83,7 @@ export default function HeroSection() {
                   speedSegment={0.3}
                   delay={0.5}
                   as="p"
-                  className="mx-auto mt-8 max-w-4xl text-balance text-lg text-muted-foreground"
+                  className="mx-auto mt-8 max-w-4xl text-balance text-lg text-white/90"
                 >
                   {t('description')}
                 </TextEffect>
