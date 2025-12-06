@@ -8,7 +8,7 @@ import { KlingResults } from './kling-results';
 
 export default function KlingShowcase() {
   const t = useTranslations('HomePage.showcase');
-  const { image, isLoading, error } = useKlingGeneration();
+  const { image, isLoading, error, progress } = useKlingGeneration();
   const [currentPrompt, setCurrentPrompt] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -16,9 +16,9 @@ export default function KlingShowcase() {
     // Could add any pre-generation logic here
   };
 
-  const handleGenerationComplete = (generatedImage: string) => {
+  const handleGenerationComplete = (generatedVideo: string) => {
     // Could add any post-generation logic here
-    console.log('Image generated successfully');
+    console.log('Video generated successfully');
   };
 
   const handleGenerationError = (errorMessage: string) => {
@@ -72,9 +72,10 @@ export default function KlingShowcase() {
             {/* Right Panel - Results */}
             <div className="order-1 lg:order-2">
               <KlingResults
-                image={image}
+                video={image}
                 isLoading={isLoading}
                 error={error}
+                progress={progress}
                 prompt={currentPrompt}
                 onRetry={handleRetry}
                 onExampleClick={handleExampleClick}
