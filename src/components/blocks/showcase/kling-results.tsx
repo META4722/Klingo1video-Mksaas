@@ -104,9 +104,9 @@ export function KlingResults({
   };
 
   const getProgressMessage = (progress: number) => {
-    if (progress < 30) return 'Analyzing prompt...';
-    if (progress < 60) return 'Generating keyframes...';
-    if (progress < 90) return 'Creating video...';
+    if (progress < 30) return t('results.generating');
+    if (progress < 60) return 'Analyzing frames and motion...';
+    if (progress < 90) return 'Rendering video...';
     return 'Finalizing video...';
   };
 

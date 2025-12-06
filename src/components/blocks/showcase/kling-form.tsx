@@ -2,331 +2,399 @@
 
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { useSession } from '@/hooks/use-session';
 import { useKlingGeneration } from '@/hooks/use-kling-generation';
 import { cn } from '@/lib/utils';
-import { Info, Loader2, Sparkles, Upload, Zap } from 'lucide-react';
+import { Loader2, Sparkles, Upload, X, Zap } from 'lucide-react';
 import { useLocaleRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { uploadFileFromBrowser } from '@/storage/client';
+import Image from 'next/image';
 
 interface KlingFormProps {
-  onGenerationComplete?: (image: string) => void;
-  onGenerationError?: (error: string) => void;
-  onGenerationStart?: () => void;
+	onGenerationComplete?: (video: string) => void;
+	onGenerationError?: (error: string) => void;
+	onGenerationStart?: () => void;
 }
 
-type SizeOption = '1K' | '2K' | '4K';
-type VersionOption = '4.5' | '4.0';
-type OptimizationMode = 'standard' | 'quality' | 'speed';
+type DurationOption = 5 | 10;
 
-const CREDIT_COSTS: Record<SizeOption, number> = {
-  '1K': 10,
-  '2K': 15,
-  '4K': 25,
+const CREDIT_COSTS: Record<DurationOption, number> = {
+	5: 10,
+	10: 20,
 };
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+
 export function KlingForm({
-  onGenerationComplete,
-  onGenerationError,
-  onGenerationStart,
+	onGenerationComplete,
+	onGenerationError,
+	onGenerationStart,
 }: KlingFormProps) {
-  const t = useTranslations('HomePage.showcase');
-  const session = useSession();
-  const router = useLocaleRouter();
-  const {
-    generateImage,
-    isLoading,
-    error,
-    image,
-    userCredits,
-    refreshCredits,
-  } = useKlingGeneration();
+	const t = useTranslations('HomePage.showcase');
+	const session = useSession();
+	const router = useLocaleRouter();
+	const {
+		generateVideo,
+		isLoading,
+		error,
+		video,
+		userCredits,
+		refreshCredits,
+	} = useKlingGeneration();
 
-  // Form state
-  const [prompt, setPrompt] = useState('');
-  const [version, setVersion] = useState<VersionOption>('4.5');
-  const [size, setSize] = useState<SizeOption>('1K');
-  const [optimizationMode, setOptimizationMode] =
-    useState<OptimizationMode>('standard');
-  const [watermark, setWatermark] = useState(false);
+	// Form state
+	const [prompt, setPrompt] = useState('');
+	const [duration, setDuration] = useState<DurationOption>(5);
+	const [firstFrameUrl, setFirstFrameUrl] = useState<string>('');
+	const [lastFrameUrl, setLastFrameUrl] = useState<string>('');
+	const [uploadingFirst, setUploadingFirst] = useState(false);
+	const [uploadingLast, setUploadingLast] = useState(false);
 
-  // Load user credits on mount
-  useEffect(() => {
-    if (session?.user?.id) {
-      refreshCredits();
-    }
-  }, [session?.user?.id]);
+	const firstFrameInputRef = useRef<HTMLInputElement>(null);
+	const lastFrameInputRef = useRef<HTMLInputElement>(null);
 
-  // Listen for example selection events
-  useEffect(() => {
-    const handleExampleSelected = (event: Event) => {
-      const customEvent = event as CustomEvent<{ prompt: string }>;
-      if (customEvent.detail?.prompt) {
-        setPrompt(customEvent.detail.prompt);
-      }
-    };
+	// Load user credits on mount
+	useEffect(() => {
+		if (session?.user?.id) {
+			refreshCredits();
+		}
+	}, [session?.user?.id]);
 
-    window.addEventListener('kling-example-selected', handleExampleSelected);
-    return () => {
-      window.removeEventListener(
-        'kling-example-selected',
-        handleExampleSelected
-      );
-    };
-  }, []);
+	// Listen for example selection events
+	useEffect(() => {
+		const handleExampleSelected = (event: Event) => {
+			const customEvent = event as CustomEvent<{ prompt: string }>;
+			if (customEvent.detail?.prompt) {
+				setPrompt(customEvent.detail.prompt);
+			}
+		};
 
-  // Handle generation completion
-  useEffect(() => {
-    if (image) {
-      onGenerationComplete?.(image);
-    }
-  }, [image]);
+		window.addEventListener('kling-example-selected', handleExampleSelected);
+		return () => {
+			window.removeEventListener(
+				'kling-example-selected',
+				handleExampleSelected,
+			);
+		};
+	}, []);
 
-  // Handle generation error
-  useEffect(() => {
-    if (error) {
-      onGenerationError?.(error);
-    }
-  }, [error]);
+	// Handle generation completion
+	useEffect(() => {
+		if (video) {
+			onGenerationComplete?.(video);
+		}
+	}, [video]);
 
-  const handleGenerate = async () => {
-    console.log('Generate button clicked');
-    console.log('Prompt:', prompt);
-    console.log('Prompt length:', prompt.trim().length);
-    console.log('Session:', session?.user ? 'Logged in' : 'Not logged in');
-    console.log('User credits:', userCredits);
-    console.log('Required credits:', CREDIT_COSTS[size]);
+	// Handle generation error
+	useEffect(() => {
+		if (error) {
+			onGenerationError?.(error);
+		}
+	}, [error]);
 
-    // Validate prompt - don't call onGenerationError for validation feedback
-    // The UI hints below the button already show these messages
-    if (!prompt.trim()) {
-      console.log('Validation failed: Empty prompt');
-      return;
-    }
+	const handleFileUpload = async (
+		file: File,
+		type: 'first' | 'last',
+	): Promise<void> => {
+		// Validate file type
+		if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+			alert('Please upload a JPG, PNG, or WebP image');
+			return;
+		}
 
-    if (prompt.trim().length < 10) {
-      console.log('Validation failed: Prompt too short');
-      return;
-    }
+		// Validate file size
+		if (file.size > MAX_FILE_SIZE) {
+			alert('File size must be less than 10MB');
+			return;
+		}
 
-    // Check authentication
-    if (!session?.user) {
-      console.log('Redirecting to login');
-      // Redirect to login with callback to homepage generation section
-      router.push(
-        '/auth/login?callbackUrl=' + encodeURIComponent('/#generation')
-      );
-      return;
-    }
+		const setUploading = type === 'first' ? setUploadingFirst : setUploadingLast;
+		const setUrl = type === 'first' ? setFirstFrameUrl : setLastFrameUrl;
 
-    // Check credits
-    const requiredCredits = CREDIT_COSTS[size];
-    if (userCredits !== null && userCredits < requiredCredits) {
-      console.log('Validation failed: Insufficient credits');
-      return;
-    }
+		try {
+			setUploading(true);
+			const result = await uploadFileFromBrowser(file);
+			setUrl(result.url);
+		} catch (err) {
+			console.error('File upload failed:', err);
+			alert(
+				err instanceof Error
+					? err.message
+					: 'Failed to upload image. Please try again.',
+			);
+		} finally {
+			setUploading(false);
+		}
+	};
 
-    // Start generation
-    console.log('Starting generation...');
-    onGenerationStart?.();
-    await generateImage({
-      prompt,
-      version,
-      size,
-      optimizationMode,
-      watermark,
-    });
-    console.log('Generation completed');
-  };
+	const handleFirstFrameChange = async (
+		e: React.ChangeEvent<HTMLInputElement>,
+	) => {
+		const file = e.target.files?.[0];
+		if (file) {
+			await handleFileUpload(file, 'first');
+		}
+	};
 
-  const isFormValid =
-    prompt.trim().length >= 10 && prompt.trim().length <= 5000;
-  const requiredCredits = CREDIT_COSTS[size];
+	const handleLastFrameChange = async (
+		e: React.ChangeEvent<HTMLInputElement>,
+	) => {
+		const file = e.target.files?.[0];
+		if (file) {
+			await handleFileUpload(file, 'last');
+		}
+	};
 
-  return (
-    <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 space-y-6 h-full flex flex-col">
-      {/* Header with credits */}
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">{t('form.promptLabel')}</h3>
-        {session?.user && userCredits !== null && (
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Zap className="size-4 text-yellow-500" />
-            <span>{userCredits} Credits</span>
-          </div>
-        )}
-      </div>
+	const handleGenerate = async () => {
+		// Validate prompt
+		if (!prompt.trim()) {
+			return;
+		}
 
-      {/* Prompt Input */}
-      <div className="space-y-2 flex-1">
-        <Textarea
-          placeholder={t('form.promptPlaceholder')}
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          className="min-h-[120px] resize-none"
-          maxLength={5000}
-        />
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span>{t('form.promptHint')}</span>
-          <span>{prompt.length}/5000</span>
-        </div>
-      </div>
+		if (prompt.trim().length < 10) {
+			return;
+		}
 
-      {/* Version Selector */}
-      <div className="space-y-2">
-        <Label>{t('form.version')}</Label>
-        <div className="flex gap-2">
-          <Button
-            type="button"
-            variant={version === '4.0' ? 'default' : 'outline'}
-            onClick={() => setVersion('4.0')}
-            className="flex-1"
-          >
-            Kling O1 4.0
-          </Button>
-          <Button
-            type="button"
-            variant={version === '4.5' ? 'default' : 'outline'}
-            onClick={() => setVersion('4.5')}
-            className="flex-1 gap-2"
-          >
-            Kling O1 4.5
-            <Sparkles className="size-4" />
-          </Button>
-        </div>
-      </div>
+		// Check authentication
+		if (!session?.user) {
+			router.push(
+				'/auth/login?callbackUrl=' + encodeURIComponent('/#generation'),
+			);
+			return;
+		}
 
-      {/* Reference Image Upload (UI only - disabled) */}
-      <div className="space-y-2">
-        <Label className="flex items-center gap-2">
-          {t('form.referenceImage')}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Info className="size-4 text-muted-foreground" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p className="max-w-xs text-sm">Coming Soon</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </Label>
-        <div
-          className={cn(
-            'border-2 border-dashed border-border rounded-lg p-8',
-            'flex flex-col items-center justify-center gap-2',
-            'text-muted-foreground cursor-not-allowed opacity-50'
-          )}
-        >
-          <Upload className="size-8" />
-          <p className="text-sm">{t('form.referenceImage')}</p>
-          <p className="text-xs">{t('form.referenceImageHint')}</p>
-        </div>
-      </div>
+		// Validate first frame upload
+		if (!firstFrameUrl) {
+			alert('Please upload at least the first frame image');
+			return;
+		}
 
-      {/* Size Selector */}
-      <div className="space-y-2">
-        <Label>{t('form.size')}</Label>
-        <div className="grid grid-cols-3 gap-2">
-          {(['1K', '2K', '4K'] as const).map((sizeOption) => (
-            <Button
-              key={sizeOption}
-              type="button"
-              variant={size === sizeOption ? 'default' : 'outline'}
-              onClick={() => setSize(sizeOption)}
-              className="flex flex-col h-auto py-3"
-            >
-              <span className="font-semibold">{sizeOption}</span>
-              <span className="text-xs opacity-80">
-                {CREDIT_COSTS[sizeOption]}{' '}
-                {t('form.creditCost', { cost: '' }).trim()}
-              </span>
-            </Button>
-          ))}
-        </div>
-      </div>
+		// Check credits
+		const requiredCredits = CREDIT_COSTS[duration];
+		if (userCredits !== null && userCredits < requiredCredits) {
+			return;
+		}
 
-      {/* Optimization Mode */}
-      <div className="space-y-2">
-        <Label>{t('form.optimization')}</Label>
-        <Select
-          value={optimizationMode}
-          onValueChange={(value) =>
-            setOptimizationMode(value as OptimizationMode)
-          }
-        >
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="standard">Standard</SelectItem>
-            <SelectItem value="quality">Quality</SelectItem>
-            <SelectItem value="speed">Speed</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+		// Prepare image URLs array
+		const imageUrls = [firstFrameUrl];
+		if (lastFrameUrl) {
+			imageUrls.push(lastFrameUrl);
+		}
 
-      {/* Watermark Toggle */}
-      <div className="flex items-center justify-between">
-        <div className="space-y-0.5">
-          <Label>{t('form.watermark')}</Label>
-          <p className="text-xs text-muted-foreground">
-            {t('form.watermarkDesc')}
-          </p>
-        </div>
-        <Switch checked={watermark} onCheckedChange={setWatermark} />
-      </div>
+		// Start generation
+		onGenerationStart?.();
+		await generateVideo({
+			prompt,
+			imageUrls,
+			duration,
+		});
+	};
 
-      {/* Generate Button */}
-      <Button
-        onClick={handleGenerate}
-        disabled={isLoading}
-        className="w-full gap-2"
-        size="lg"
-      >
-        {isLoading ? (
-          <>
-            <Loader2 className="size-4 animate-spin" />
-            Generating...
-          </>
-        ) : (
-          <>
-            <Sparkles className="size-4" />
-            {t('form.generate')} ({requiredCredits}{' '}
-            {t('form.creditCost', { cost: '' }).trim()})
-          </>
-        )}
-      </Button>
+	const isFormValid =
+		prompt.trim().length >= 10 &&
+		prompt.trim().length <= 5000 &&
+		firstFrameUrl;
+	const requiredCredits = CREDIT_COSTS[duration];
 
-      {/* Validation hints */}
-      {!session?.user ? (
-        <p className="text-xs text-center text-muted-foreground">
-          Please log in to generate images
-        </p>
-      ) : !isFormValid && prompt.trim().length > 0 ? (
-        <p className="text-xs text-center text-orange-500">
-          Prompt must be at least 10 characters
-        </p>
-      ) : userCredits !== null && userCredits < requiredCredits ? (
-        <p className="text-xs text-center text-orange-500">
-          Insufficient credits ({userCredits}/{requiredCredits})
-        </p>
-      ) : null}
-    </div>
-  );
+	return (
+		<div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 space-y-6 h-full flex flex-col">
+			{/* Header with credits */}
+			<div className="flex items-center justify-between">
+				<h3 className="text-lg font-semibold">{t('form.promptLabel')}</h3>
+				{session?.user && userCredits !== null && (
+					<div className="flex items-center gap-2 text-sm text-muted-foreground">
+						<Zap className="size-4 text-yellow-500" />
+						<span>{userCredits} Credits</span>
+					</div>
+				)}
+			</div>
+
+			{/* Prompt Input */}
+			<div className="space-y-2 flex-1">
+				<Textarea
+					placeholder={t('form.promptPlaceholder')}
+					value={prompt}
+					onChange={(e) => setPrompt(e.target.value)}
+					className="min-h-[120px] resize-none"
+					maxLength={5000}
+				/>
+				<div className="flex items-center justify-between text-xs text-muted-foreground">
+					<span>{t('form.promptHint')}</span>
+					<span>{prompt.length}/5000</span>
+				</div>
+			</div>
+
+			{/* First Frame Upload */}
+			<div className="space-y-2">
+				<Label>{t('form.firstFrame')}</Label>
+				<input
+					ref={firstFrameInputRef}
+					type="file"
+					accept="image/jpeg,image/png,image/webp"
+					onChange={handleFirstFrameChange}
+					className="hidden"
+				/>
+				{firstFrameUrl ? (
+					<div className="relative border-2 border-border rounded-lg overflow-hidden">
+						<Image
+							src={firstFrameUrl}
+							alt="First frame"
+							width={400}
+							height={300}
+							className="w-full h-48 object-cover"
+						/>
+						<button
+							type="button"
+							onClick={() => setFirstFrameUrl('')}
+							className="absolute top-2 right-2 bg-destructive text-destructive-foreground rounded-full p-1.5 hover:bg-destructive/90"
+						>
+							<X className="size-4" />
+						</button>
+					</div>
+				) : (
+					<button
+						type="button"
+						onClick={() => firstFrameInputRef.current?.click()}
+						disabled={uploadingFirst}
+						className={cn(
+							'w-full border-2 border-dashed border-border rounded-lg p-8',
+							'flex flex-col items-center justify-center gap-2',
+							'text-muted-foreground hover:border-primary hover:text-primary transition-colors',
+							uploadingFirst && 'cursor-not-allowed opacity-50',
+						)}
+					>
+						{uploadingFirst ? (
+							<Loader2 className="size-8 animate-spin" />
+						) : (
+							<Upload className="size-8" />
+						)}
+						<p className="text-sm font-medium">{t('form.uploadFirstFrame')}</p>
+						<p className="text-xs">{t('form.uploadHint')}</p>
+					</button>
+				)}
+			</div>
+
+			{/* Last Frame Upload (Optional) */}
+			<div className="space-y-2">
+				<Label>{t('form.lastFrame')}</Label>
+				<input
+					ref={lastFrameInputRef}
+					type="file"
+					accept="image/jpeg,image/png,image/webp"
+					onChange={handleLastFrameChange}
+					className="hidden"
+				/>
+				{lastFrameUrl ? (
+					<div className="relative border-2 border-border rounded-lg overflow-hidden">
+						<Image
+							src={lastFrameUrl}
+							alt="Last frame"
+							width={400}
+							height={300}
+							className="w-full h-48 object-cover"
+						/>
+						<button
+							type="button"
+							onClick={() => setLastFrameUrl('')}
+							className="absolute top-2 right-2 bg-destructive text-destructive-foreground rounded-full p-1.5 hover:bg-destructive/90"
+						>
+							<X className="size-4" />
+						</button>
+					</div>
+				) : (
+					<button
+						type="button"
+						onClick={() => lastFrameInputRef.current?.click()}
+						disabled={uploadingLast}
+						className={cn(
+							'w-full border-2 border-dashed border-border rounded-lg p-8',
+							'flex flex-col items-center justify-center gap-2',
+							'text-muted-foreground hover:border-primary hover:text-primary transition-colors',
+							uploadingLast && 'cursor-not-allowed opacity-50',
+						)}
+					>
+						{uploadingLast ? (
+							<Loader2 className="size-8 animate-spin" />
+						) : (
+							<Upload className="size-8" />
+						)}
+						<p className="text-sm font-medium">{t('form.uploadLastFrame')}</p>
+						<p className="text-xs">{t('form.uploadHint')}</p>
+					</button>
+				)}
+			</div>
+
+			{/* Duration Selector */}
+			<div className="space-y-2">
+				<Label>{t('form.duration')}</Label>
+				<div className="grid grid-cols-2 gap-2">
+					<Button
+						type="button"
+						variant={duration === 5 ? 'default' : 'outline'}
+						onClick={() => setDuration(5)}
+						className="flex flex-col h-auto py-3"
+					>
+						<span className="font-semibold">{t('form.duration5s')}</span>
+						<span className="text-xs opacity-80">
+							{CREDIT_COSTS[5]} {t('form.creditCost')}
+						</span>
+					</Button>
+					<Button
+						type="button"
+						variant={duration === 10 ? 'default' : 'outline'}
+						onClick={() => setDuration(10)}
+						className="flex flex-col h-auto py-3"
+					>
+						<span className="font-semibold">{t('form.duration10s')}</span>
+						<span className="text-xs opacity-80">
+							{CREDIT_COSTS[10]} {t('form.creditCost')}
+						</span>
+					</Button>
+				</div>
+			</div>
+
+			{/* Generate Button */}
+			<Button
+				onClick={handleGenerate}
+				disabled={isLoading || !isFormValid}
+				className="w-full gap-2"
+				size="lg"
+			>
+				{isLoading ? (
+					<>
+						<Loader2 className="size-4 animate-spin" />
+						Generating...
+					</>
+				) : (
+					<>
+						<Sparkles className="size-4" />
+						{t('form.generate')} ({requiredCredits} {t('form.creditCost')})
+					</>
+				)}
+			</Button>
+
+			{/* Validation hints */}
+			{!session?.user ? (
+				<p className="text-xs text-center text-muted-foreground">
+					Please log in to generate videos
+				</p>
+			) : !firstFrameUrl ? (
+				<p className="text-xs text-center text-orange-500">
+					Please upload at least the first frame image
+				</p>
+			) : !isFormValid && prompt.trim().length > 0 ? (
+				<p className="text-xs text-center text-orange-500">
+					Prompt must be at least 10 characters
+				</p>
+			) : userCredits !== null && userCredits < requiredCredits ? (
+				<p className="text-xs text-center text-orange-500">
+					Insufficient credits ({userCredits}/{requiredCredits})
+				</p>
+			) : null}
+		</div>
+	);
 }

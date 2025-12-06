@@ -8,7 +8,7 @@ import { KlingResults } from './kling-results';
 
 export default function KlingShowcase() {
   const t = useTranslations('HomePage.showcase');
-  const { image, isLoading, error, progress } = useKlingGeneration();
+  const { video, isLoading, error, progress } = useKlingGeneration();
   const [currentPrompt, setCurrentPrompt] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -72,7 +72,7 @@ export default function KlingShowcase() {
             {/* Right Panel - Results */}
             <div className="order-1 lg:order-2">
               <KlingResults
-                video={image}
+                video={video}
                 isLoading={isLoading}
                 error={error}
                 progress={progress}
