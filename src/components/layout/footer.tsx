@@ -9,6 +9,7 @@ import { useSocialLinks } from '@/config/social-config';
 import { LocaleLink } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import type React from 'react';
 
 export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
@@ -108,12 +109,13 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
-                <img
+                <Image
                   src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light"
                   width={120}
                   height={30}
                   alt="Fazier badge"
                   className="h-6 w-auto dark:brightness-90"
+                  unoptimized
                 />
               </a>
 
@@ -124,12 +126,13 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
-                <img
+                <Image
                   src="https://www.superlaun.ch/badge.png"
                   alt="Featured on Super Launch"
                   width={60}
                   height={60}
                   className="h-6 w-auto"
+                  unoptimized
                 />
               </a>
 
@@ -140,10 +143,13 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
-                <img
+                <Image
                   src="https://img.turbo0.com/badge-listed-light.svg"
                   alt="Listed on Turbo0"
+                  width={120}
+                  height={30}
                   className="h-6 w-auto"
+                  unoptimized
                 />
               </a>
 
@@ -154,12 +160,13 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
-                <img
+                <Image
                   src="https://www.showmebest.ai/badge/feature-badge-white.webp"
                   alt="Featured on ShowMeBestAI"
                   width={100}
                   height={27}
                   className="h-6 w-auto"
+                  unoptimized
                 />
               </a>
 
@@ -170,12 +177,13 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
-                <img
+                <Image
                   src="https://twelve.tools/badge0-light.svg"
                   alt="Featured on Twelve Tools"
                   width={90}
                   height={24}
                   className="h-6 w-auto"
+                  unoptimized
                 />
               </a>
 
@@ -186,12 +194,13 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
-                <img
+                <Image
                   src="https://cdn.prod.website-files.com/63d8afd87da01fb58ea3fbcb/6487e2868c6c8f93b4828827_dang-badge.png"
                   alt="Dang.ai"
                   width={70}
                   height={24}
                   className="h-6 w-auto"
+                  unoptimized
                 />
               </a>
 
@@ -213,12 +222,13 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
-                <img
+                <Image
                   src="https://startupfa.me/badges/featured/default.webp"
                   alt="Kling O1 - Featured on Startup Fame"
                   width={80}
                   height={25}
                   className="h-6 w-auto"
+                  unoptimized
                 />
               </a>
 
@@ -229,13 +239,51 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 rel="noopener"
                 className="transition-opacity hover:opacity-80"
               >
-                <img
+                <Image
                   src="https://aiagentsdirectory.com/featured-badge.svg?v=2024"
                   alt="Kling O1 - Featured AI Agent on AI Agents Directory"
                   width={90}
                   height={22}
                   className="h-6 w-auto"
+                  unoptimized
                 />
+              </a>
+
+              {/* Aura++ */}
+              <a
+                href="https://auraplusplus.com/projects/kling-o1"
+                target="_blank"
+                rel="noopener"
+                className="transition-opacity hover:opacity-80"
+              >
+                <Image
+                  src="https://auraplusplus.com/images/badges/featured-on-light.svg"
+                  alt="Featured on Aura++"
+                  width={100}
+                  height={30}
+                  className="h-6 w-auto"
+                  unoptimized
+                />
+              </a>
+
+              {/* All Your Tech */}
+              <a
+                href="https://allyourtech.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-medium hover:text-primary transition-colors px-3 py-1 border border-border rounded-md hover:border-primary"
+              >
+                AI Tools Directory
+              </a>
+
+              {/* AI Toolz Dir */}
+              <a
+                href="https://www.aitoolzdir.com"
+                target="_blank"
+                rel="noopener"
+                className="text-xs font-medium hover:text-primary transition-colors px-3 py-1 border border-border rounded-md hover:border-primary"
+              >
+                AI Toolz Dir
               </a>
             </div>
           </div>

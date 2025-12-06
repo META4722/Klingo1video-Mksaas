@@ -148,6 +148,42 @@ export default function FeaturedOn() {
                 className="h-6 w-auto"
               />
             </a>
+
+            {/* Aura++ */}
+            <a
+              href="https://auraplusplus.com/projects/kling-o1"
+              target="_blank"
+              rel="noopener"
+              className="transition-opacity hover:opacity-80"
+            >
+              <img
+                src="https://auraplusplus.com/images/badges/featured-on-light.svg"
+                alt="Featured on Aura++"
+                className="h-6 w-auto"
+              />
+            </a>
+
+            {/* All Your Tech */}
+            <a
+              href="https://allyourtech.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="AI Tools Directory"
+              className="text-xs font-medium hover:text-primary transition-colors px-3 py-1 border border-border rounded-md hover:border-primary"
+            >
+              AI Tools Directory
+            </a>
+
+            {/* AI Toolz Dir */}
+            <a
+              href="https://www.aitoolzdir.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="AI Toolz Dir"
+              className="text-xs font-medium hover:text-primary transition-colors px-3 py-1 border border-border rounded-md hover:border-primary"
+            >
+              AI Toolz Dir
+            </a>
           </div>
         </div>
       </Container>
