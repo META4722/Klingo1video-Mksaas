@@ -22,28 +22,28 @@ const showcaseImages = [
     id: 1,
     title: 'Real-world Knowledge',
     description:
-      'Use deep reasoning to deliver precise, detailed image results. Annotate pictures, turn handwritten notes into diagrams, or build infographics.',
+      'Use deep reasoning to deliver precise, detailed video results. Generate dynamic animations, transform concepts into motion, or build visual stories.',
     image: 'https://assets.seedream45.org/nano2-showcase/knowledge.jpg',
   },
   {
     id: 2,
     title: 'Clear Text Generation',
     description:
-      'Sharp, legible text for posters, diagrams, and product mockups. Control fonts or simulate handwriting with high fidelity.',
+      'Sharp, legible text for videos, motion graphics, and product presentations. Control fonts and timing with high fidelity.',
     image: 'https://assets.seedream45.org/nano2-showcase/text-quality.jpg',
   },
   {
     id: 3,
     title: 'Perfect Style Transfer',
     description:
-      'Capture and transfer artistic styles—oil painting, watercolor, illustration, or photography—consistently onto your creations.',
+      'Capture and transfer artistic styles—animation, cinematic, illustration, or photorealistic—consistently onto your video creations.',
     image: 'https://assets.seedream45.org/nano2-showcase/sketches.jpg',
   },
   {
     id: 4,
     title: '4K Ultra Resolution',
     description:
-      'Up to 4K ultra-high resolution with crystal-clear detail for professional print and commercial use.',
+      'Up to 4K ultra-high resolution with crystal-clear detail for professional video production and commercial use.',
     image: 'https://assets.seedream45.org/nano2-showcase/text-to-4k.png',
   },
 ];
@@ -85,11 +85,11 @@ export default function AIWorkbenchShowcase() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Seedream 4.5 AI Creation Workbench
+            Kling O1 AI Creation Workbench
           </h2>
           <p className="hidden md:block text-lg text-muted-foreground">
             Use advanced AI technology to transform your imagination into
-            beautiful images
+            stunning videos
           </p>
         </div>
 
@@ -152,14 +152,14 @@ export default function AIWorkbenchShowcase() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
                               <span className="font-semibold text-base text-foreground truncate">
-                                Seedream 4.5
+                                Kling O1 4.5
                               </span>
                               <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-yellow-400 to-green-400 px-2 py-0.5 text-[10px] font-semibold text-slate-900 shadow-sm">
                                 New
                               </span>
                             </div>
                             <span className="text-xs text-muted-foreground block truncate">
-                              Professional version with higher resolution
+                              Professional video generation with higher resolution
                               support
                             </span>
                           </div>
@@ -204,7 +204,7 @@ export default function AIWorkbenchShowcase() {
                       <div className="flex items-center justify-between">
                         <h3 className="text-sm font-semibold text-foreground">
                           Describe your{' '}
-                          {activeTab === 'edit' ? 'edit' : 'image'}
+                          {activeTab === 'edit' ? 'edit' : 'video'}
                         </h3>
                         <span className="text-xs text-muted-foreground">
                           0/5000
@@ -299,7 +299,7 @@ export default function AIWorkbenchShowcase() {
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary shadow-lg shadow-primary/25">
                         <Zap className="h-3.5 w-3.5 text-primary-foreground animate-pulse" />
                         <span className="text-xs font-bold text-primary-foreground uppercase tracking-wider">
-                          New Release! Seedream 4.5
+                          New Release! Kling O1 4.5
                         </span>
                       </div>
                     </div>

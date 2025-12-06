@@ -18,14 +18,14 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useSession } from '@/hooks/use-session';
-import { useSeedreamGeneration } from '@/hooks/use-seedream-generation';
+import { useKlingGeneration } from '@/hooks/use-kling-generation';
 import { cn } from '@/lib/utils';
 import { Info, Loader2, Sparkles, Upload, Zap } from 'lucide-react';
 import { useLocaleRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
-interface SeedreamFormProps {
+interface KlingFormProps {
   onGenerationComplete?: (image: string) => void;
   onGenerationError?: (error: string) => void;
   onGenerationStart?: () => void;
@@ -41,11 +41,11 @@ const CREDIT_COSTS: Record<SizeOption, number> = {
   '4K': 25,
 };
 
-export function SeedreamForm({
+export function KlingForm({
   onGenerationComplete,
   onGenerationError,
   onGenerationStart,
-}: SeedreamFormProps) {
+}: KlingFormProps) {
   const t = useTranslations('HomePage.showcase');
   const session = useSession();
   const router = useLocaleRouter();
@@ -56,7 +56,7 @@ export function SeedreamForm({
     image,
     userCredits,
     refreshCredits,
-  } = useSeedreamGeneration();
+  } = useKlingGeneration();
 
   // Form state
   const [prompt, setPrompt] = useState('');
@@ -82,10 +82,10 @@ export function SeedreamForm({
       }
     };
 
-    window.addEventListener('seedream-example-selected', handleExampleSelected);
+    window.addEventListener('kling-example-selected', handleExampleSelected);
     return () => {
       window.removeEventListener(
-        'seedream-example-selected',
+        'kling-example-selected',
         handleExampleSelected
       );
     };
@@ -197,7 +197,7 @@ export function SeedreamForm({
             onClick={() => setVersion('4.0')}
             className="flex-1"
           >
-            Seedream 4.0
+            Kling O1 4.0
           </Button>
           <Button
             type="button"
@@ -205,7 +205,7 @@ export function SeedreamForm({
             onClick={() => setVersion('4.5')}
             className="flex-1 gap-2"
           >
-            Seedream 4.5
+            Kling O1 4.5
             <Sparkles className="size-4" />
           </Button>
         </div>

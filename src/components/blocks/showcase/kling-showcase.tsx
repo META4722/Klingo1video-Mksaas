@@ -1,14 +1,14 @@
 'use client';
 
-import { useSeedreamGeneration } from '@/hooks/use-seedream-generation';
+import { useKlingGeneration } from '@/hooks/use-kling-generation';
 import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
-import { SeedreamForm } from './seedream-form';
-import { SeedreamResults } from './seedream-results';
+import { KlingForm } from './kling-form';
+import { KlingResults } from './kling-results';
 
-export default function SeedreamShowcase() {
+export default function KlingShowcase() {
   const t = useTranslations('HomePage.showcase');
-  const { image, isLoading, error } = useSeedreamGeneration();
+  const { image, isLoading, error } = useKlingGeneration();
   const [currentPrompt, setCurrentPrompt] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +35,7 @@ export default function SeedreamShowcase() {
   const handleExampleClick = (examplePrompt: string) => {
     // This will be handled by the form component via a custom event
     // or we could lift the prompt state up here
-    const event = new CustomEvent('seedream-example-selected', {
+    const event = new CustomEvent('kling-example-selected', {
       detail: { prompt: examplePrompt },
     });
     window.dispatchEvent(event);
@@ -62,7 +62,7 @@ export default function SeedreamShowcase() {
           >
             {/* Left Panel - Form */}
             <div className="order-2 lg:order-1">
-              <SeedreamForm
+              <KlingForm
                 onGenerationStart={handleGenerationStart}
                 onGenerationComplete={handleGenerationComplete}
                 onGenerationError={handleGenerationError}
@@ -71,7 +71,7 @@ export default function SeedreamShowcase() {
 
             {/* Right Panel - Results */}
             <div className="order-1 lg:order-2">
-              <SeedreamResults
+              <KlingResults
                 image={image}
                 isLoading={isLoading}
                 error={error}

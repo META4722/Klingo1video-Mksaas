@@ -16,7 +16,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
 
-interface SeedreamResultsProps {
+interface KlingResultsProps {
   image: string | null;
   isLoading: boolean;
   error: string | null;
@@ -44,14 +44,14 @@ const EXAMPLE_IMAGES = [
   },
 ];
 
-export function SeedreamResults({
+export function KlingResults({
   image,
   isLoading,
   error,
   prompt,
   onRetry,
   onExampleClick,
-}: SeedreamResultsProps) {
+}: KlingResultsProps) {
   const t = useTranslations('HomePage.showcase');
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
@@ -61,7 +61,7 @@ export function SeedreamResults({
 
     const link = document.createElement('a');
     link.href = `data:image/png;base64,${image}`;
-    link.download = `seedream-${Date.now()}.png`;
+    link.download = `kling-o1-${Date.now()}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

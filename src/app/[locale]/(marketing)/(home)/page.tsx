@@ -3,7 +3,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import FeaturesShowcase from '@/components/blocks/features/features-showcase';
 import HeroSection from '@/components/blocks/hero/hero';
 import PricingSection from '@/components/blocks/pricing/pricing';
-import SeedreamShowcase from '@/components/blocks/showcase/seedream-showcase';
+import KlingShowcase from '@/components/blocks/showcase/kling-showcase';
 import CrispChat from '@/components/layout/crisp-chat';
 import { constructMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
@@ -43,7 +43,7 @@ export default async function HomePage(props: HomePageProps) {
       <div className="flex flex-col">
         <HeroSection />
 
-        <SeedreamShowcase />
+        <KlingShowcase />
 
         <FeaturesShowcase />
 

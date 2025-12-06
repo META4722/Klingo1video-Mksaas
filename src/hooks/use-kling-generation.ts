@@ -9,7 +9,7 @@ import {
 import { useSession } from '@/hooks/use-session';
 import { useState } from 'react';
 
-interface SeedreamParams {
+interface KlingParams {
   prompt: string;
   version: '4.5' | '4.0';
   size: '1K' | '2K' | '4K';
@@ -17,12 +17,12 @@ interface SeedreamParams {
   watermark: boolean;
 }
 
-interface UseSeedreamGenerationReturn {
+interface UseKlingGenerationReturn {
   image: string | null;
   isLoading: boolean;
   error: string | null;
   progress: number;
-  generateImage: (params: SeedreamParams) => Promise<void>;
+  generateImage: (params: KlingParams) => Promise<void>;
   checkCredits: () => Promise<boolean>;
   userCredits: number | null;
   refreshCredits: () => Promise<void>;
@@ -42,7 +42,7 @@ const SIZE_MAP = {
   '4K': '4096x4096',
 } as const;
 
-export function useSeedreamGeneration(): UseSeedreamGenerationReturn {
+export function useKlingGeneration(): UseKlingGenerationReturn {
   const session = useSession();
   const [image, setImage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -80,7 +80,7 @@ export function useSeedreamGeneration(): UseSeedreamGenerationReturn {
   };
 
   // Generate image
-  const generateImage = async (params: SeedreamParams) => {
+  const generateImage = async (params: KlingParams) => {
     setError(null);
     setImage(null);
     setProgress(0);
@@ -123,7 +123,7 @@ export function useSeedreamGeneration(): UseSeedreamGenerationReturn {
     const request: GenerateImageRequest = {
       prompt: params.prompt,
       provider: 'replicate',
-      modelId: 'bytedance/seedream-4.5',
+      modelId: 'kuaishou/kling-o1',
       size: SIZE_MAP[params.size],
       // Watermark is currently not supported by the API endpoint
       // but we include it in params for future implementation
@@ -155,7 +155,7 @@ export function useSeedreamGeneration(): UseSeedreamGenerationReturn {
       const consumeResult = await consumeCreditsAction({
         userId,
         amount: requiredCredits,
-        description: `Generated ${params.size} image with Seedream ${params.version}`,
+        description: `Generated ${params.size} video with Kling O1 ${params.version}`,
       });
 
       if (!consumeResult.success) {
