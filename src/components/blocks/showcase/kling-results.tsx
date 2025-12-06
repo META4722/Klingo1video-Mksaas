@@ -180,7 +180,7 @@ export function KlingResults({
                 className="gap-2"
               >
                 <Eye className="size-4" />
-                {t('results.view') || 'View'}
+                View
               </Button>
               <Button
                 onClick={handleDownload}
