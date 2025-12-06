@@ -51,7 +51,7 @@ export function useFooterLinks(): NestedMenuItem[] {
               },
             ]
           : []),
-        // Docs, Changelog, Roadmap hidden for Seedream 4.5
+        // Docs, Changelog, Roadmap hidden for Kling O1
         // ...(websiteConfig.docs.enable
         //   ? [
         //       {
@@ -86,7 +86,7 @@ export function useFooterLinks(): NestedMenuItem[] {
           href: Routes.Contact,
           external: false,
         },
-        // Waitlist hidden for Seedream 4.5
+        // Waitlist hidden for Kling O1
         // {
         //   title: t('company.items.waitlist'),
         //   href: Routes.Waitlist,

@@ -250,7 +250,7 @@ export function Navbar({ scroll }: NavBarProps) {
               </div>
             )}
 
-            {/* Hidden for Seedream 4.5 */}
+            {/* Hidden for Kling O1 */}
             {/* <ModeSwitcher /> */}
             {/* <LocaleSwitcher /> */}
           </div>

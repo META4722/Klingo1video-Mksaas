@@ -70,7 +70,7 @@ export function useNavbarLinks(): NestedMenuItem[] {
           },
         ]
       : []),
-    // Docs hidden for Seedream 4.5
+    // Docs hidden for Kling O1
     // ...(websiteConfig.docs.enable
     //   ? [
     //       {
@@ -120,7 +120,7 @@ export function useNavbarLinks(): NestedMenuItem[] {
         // },
       ],
     },
-    // Pages menu hidden for Seedream 4.5
+    // Pages menu hidden for Kling O1
     // {
     //   title: t('pages.title'),
     //   items: [

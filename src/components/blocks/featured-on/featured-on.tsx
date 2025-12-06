@@ -126,7 +126,7 @@ export default function FeaturedOn() {
             >
               <img
                 src="https://startupfa.me/badges/featured/default.webp"
-                alt="Seedream 4.5 - Featured on Startup Fame"
+                alt="Kling O1 - Featured on Startup Fame"
                 width={80}
                 height={25}
                 className="h-6 w-auto"
@@ -142,7 +142,7 @@ export default function FeaturedOn() {
             >
               <img
                 src="https://aiagentsdirectory.com/featured-badge.svg?v=2024"
-                alt="SeeDream 4.5 - Featured AI Agent on AI Agents Directory"
+                alt="Kling O1 - Featured AI Agent on AI Agents Directory"
                 width={90}
                 height={22}
                 className="h-6 w-auto"

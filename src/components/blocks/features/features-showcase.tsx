@@ -8,11 +8,11 @@ import Image from 'next/image';
 const features = [
   {
     id: 1,
-    badge: 'Seedream 4.5',
+    badge: 'Kling O1',
     index: '1 / 8',
     title: 'Generate clear, sharp, and legible text',
     description: [
-      'Seedream 4.5 renders crisp, readable text for posters, diagrams, product mockups, and more with AI-driven precision.',
+      'Kling O1 renders crisp, readable text for videos, motion graphics, product presentations, and more with AI-driven precision.',
       'Describe the typography style you want—bold, elegant, or handwritten—and the model produces sharp, high-quality lettering that elevates your visuals.',
     ],
     image: 'https://assets.seedream45.org/nano2-showcase/text-quality.jpg',
@@ -21,12 +21,12 @@ const features = [
   },
   {
     id: 2,
-    badge: 'Seedream 4.5',
+    badge: 'Kling O1',
     index: '2 / 8',
-    title: 'Improved real-world knowledge for precise images',
+    title: 'Improved real-world knowledge for precise videos',
     description: [
-      'Enhanced real-world understanding keeps brand elements, cultural symbols, and details accurate.',
-      'The model can also interpret handwriting, annotate images, or convert information into diagrams and infographics for reasoning-driven visual creation.',
+      'Enhanced real-world understanding keeps brand elements, cultural symbols, and details accurate in video generation.',
+      'The model can also interpret handwriting, annotate images, or convert information into dynamic visualizations and motion graphics for reasoning-driven video creation.',
     ],
     image: 'https://assets.seedream45.org/nano2-showcase/knowledge.jpg',
     imageAlt: 'Improved real-world knowledge for precise images',
@@ -34,12 +34,12 @@ const features = [
   },
   {
     id: 3,
-    badge: 'Seedream 4.5',
+    badge: 'Kling O1',
     index: '3 / 8',
     title: 'Localized, multilingual typography',
     description: [
-      'Produce clear typography across English, Chinese, Japanese, Korean, Spanish, Arabic, and more.',
-      'Translate and edit text inside images while preserving lighting, spacing, and visual harmony—ideal for global brands.',
+      'Produce clear typography across English, Chinese, Japanese, Korean, Spanish, Arabic, and more in video content.',
+      'Translate and edit text inside videos while preserving lighting, spacing, and visual harmony—ideal for global brands.',
     ],
     image: 'https://assets.seedream45.org/nano2-showcase/multilingual.jpg',
     imageAlt: 'Localized, multilingual typography',
@@ -47,12 +47,12 @@ const features = [
   },
   {
     id: 4,
-    badge: 'Seedream 4.5',
+    badge: 'Kling O1',
     index: '4 / 8',
-    title: 'Turn scribbles and sketches into polished designs',
+    title: 'Turn scribbles and sketches into polished motion',
     description: [
-      'Transform rough ideas into clean visuals: convert sketches to detailed objects or shape early drafts into finished concepts.',
-      'The model understands structure and intent, standardizing style and refining details from draft to production-ready render.',
+      'Transform rough ideas into dynamic animations: convert sketches to detailed motion or shape early drafts into finished video concepts.',
+      'The model understands structure and intent, standardizing style and refining details from draft to production-ready video.',
     ],
     image: 'https://assets.seedream45.org/nano2-showcase/sketches.jpg',
     imageAlt: 'Turn scribbles and sketches into polished designs',
@@ -60,20 +60,20 @@ const features = [
   },
   {
     id: 5,
-    badge: 'Seedream 4.5',
+    badge: 'Kling O1',
     index: '5 / 8',
-    title: 'Turn text into 4K images',
+    title: 'Turn text into 4K videos',
     description: [
-      'Generate high-resolution, print-ready images from text with sharper details and professional clarity.',
-      'Perfect for designers, creators, and illustrators who need top-quality visuals without extra tweaking.',
+      'Generate high-resolution, professional-quality videos from text with sharper details and cinematic clarity.',
+      'Perfect for creators, filmmakers, and content producers who need top-quality videos without extra editing.',
     ],
     image: 'https://assets.seedream45.org/nano2-showcase/text-to-4k.png',
-    imageAlt: 'Turn text into 4K images',
+    imageAlt: 'Turn text into 4K videos',
     reverse: false,
   },
   {
     id: 6,
-    badge: 'Seedream 4.5',
+    badge: 'Kling O1',
     index: '6 / 8',
     title: 'Unmatched subject consistency across angles',
     description: [
@@ -86,11 +86,11 @@ const features = [
   },
   {
     id: 7,
-    badge: 'Seedream 4.5',
+    badge: 'Kling O1',
     index: '7 / 8',
     title: 'Generate multiple variants with one prompt',
     description: [
-      'Explore different creative directions quickly with side-by-side variations from a single prompt.',
+      'Explore different creative directions quickly with side-by-side video variations from a single prompt.',
       'Review styles and compositions faster, spark inspiration, and pick the best fit without rewriting.',
     ],
     image: 'https://assets.seedream45.org/nano2-showcase/variants.jpg',
@@ -99,15 +99,15 @@ const features = [
   },
   {
     id: 8,
-    badge: 'Seedream 4.5',
+    badge: 'Kling O1',
     index: '8 / 8',
-    title: 'Upscale images to 1K / 2K / 4K',
+    title: 'Upscale videos to 1K / 2K / 4K',
     description: [
-      'Enhance sharpness and detail without noise or blur, ready for print, presentations, or high-res campaigns.',
-      'Even smaller originals become crisp, professional-quality outputs.',
+      'Enhance sharpness and detail without noise or blur, ready for professional production, presentations, or high-res campaigns.',
+      'Even smaller originals become crisp, professional-quality video outputs.',
     ],
     image: 'https://assets.seedream45.org/nano2-showcase/upscale.jpg',
-    imageAlt: 'Upscale images to 1K / 2K / 4K',
+    imageAlt: 'Upscale videos to 1K / 2K / 4K',
     reverse: true,
   },
 ];
@@ -119,14 +119,14 @@ export default function FeaturesShowcase() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
         <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-secondary px-3 py-1 text-xs font-medium uppercase tracking-wide text-foreground/80">
           <Sparkles className="h-3.5 w-3.5" />
-          Seedream 4.5 Highlights
+          Kling O1 Highlights
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-          What Seedream 4.5 does best
+          What Kling O1 does best
         </h2>
         <p className="max-w-3xl mx-auto text-muted-foreground">
           A quick tour of the model's strengths—text fidelity, real-world
-          knowledge, multilingual layout, and production-ready image quality.
+          knowledge, multilingual layout, and production-ready video quality.
         </p>
       </div>
 
@@ -178,7 +178,7 @@ export default function FeaturesShowcase() {
                   className="rounded-lg shadow-lg shadow-primary/25"
                 >
                   <LocaleLink href="/auth/register">
-                    Try Seedream 4.5
+                    Try Kling O1
                   </LocaleLink>
                 </Button>
                 <Button asChild variant="outline" className="rounded-lg">

@@ -35,7 +35,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 {t('Marketing.footer.tagline')}
               </p>
 
-              {/* social links - Hidden for Seedream 4.5 */}
+              {/* social links - Hidden for Kling O1 */}
               {/* <div className="flex items-center gap-4 py-2">
                 <div className="flex items-center gap-2">
                   {socialLinks?.map((link) => (
@@ -55,7 +55,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 </div>
               </div> */}
 
-              {/* built with button - Hidden for Seedream 4.5 */}
+              {/* built with button - Hidden for Kling O1 */}
               {/* <BuiltWithButton /> */}
             </div>
           </div>
@@ -215,7 +215,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               >
                 <img
                   src="https://startupfa.me/badges/featured/default.webp"
-                  alt="Seedream 4.5 - Featured on Startup Fame"
+                  alt="Kling O1 - Featured on Startup Fame"
                   width={80}
                   height={25}
                   className="h-6 w-auto"
@@ -231,7 +231,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               >
                 <img
                   src="https://aiagentsdirectory.com/featured-badge.svg?v=2024"
-                  alt="SeeDream 4.5 - Featured AI Agent on AI Agents Directory"
+                  alt="Kling O1 - Featured AI Agent on AI Agents Directory"
                   width={90}
                   height={22}
                   className="h-6 w-auto"
@@ -249,7 +249,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
             Reserved.
           </span>
 
-          {/* Mode switcher - Hidden for Seedream 4.5 */}
+          {/* Mode switcher - Hidden for Kling O1 */}
           {/* <div className="flex items-center gap-x-4">
             <ModeSwitcherHorizontal />
           </div> */}
