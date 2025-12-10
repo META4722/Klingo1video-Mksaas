@@ -1,12 +1,13 @@
 import { websiteConfig } from '@/config/website';
-import { storageConfig } from './config/storage-config';
+import { getStorageConfig } from './config/storage-config';
 import { S3Provider } from './provider/s3';
 import type { StorageConfig, StorageProvider, UploadFileResult } from './types';
 
 /**
  * Default storage configuration
+ * @returns Storage configuration loaded from environment variables
  */
-export const defaultStorageConfig: StorageConfig = storageConfig;
+export const defaultStorageConfig = (): StorageConfig => getStorageConfig();
 
 /**
  * Global storage provider instance

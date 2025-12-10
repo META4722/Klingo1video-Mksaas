@@ -2,14 +2,19 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 /**
  * Maximum execution time for video generation requests
- * Videos can take longer than images, so we allow up to 2 minutes
+ * Videos can take 5-10 minutes, so we allow up to 10 minutes
  */
-const TIMEOUT_MILLIS = 120 * 1000; // 2 minutes
+const TIMEOUT_MILLIS = 600 * 1000; // 10 minutes
 
 /**
  * Polling interval for checking video generation status
  */
-const POLL_INTERVAL_MS = 3000; // 3 seconds
+const POLL_INTERVAL_MS = 5000; // 5 seconds
+
+/**
+ * Route segment config - extend max duration for serverless functions
+ */
+export const maxDuration = 300; // 5 minutes (Vercel limit)
 
 interface GenerateVideoRequest {
 	prompt: string;
@@ -27,6 +32,9 @@ interface EvolinkVideoRequest {
 interface EvolinkVideoResponse {
 	id?: string; // Job ID if async
 	video_url?: string; // Direct video URL if sync
+	output?: string | string[]; // Alternative field for video URL
+	result?: { video_url?: string; output?: string }; // Nested result
+	results?: string[]; // Array of video URLs (actual field from Evolink API)
 	status?: 'pending' | 'processing' | 'completed' | 'failed';
 	error?: string;
 }
@@ -45,18 +53,20 @@ const withTimeout = <T>(
 
 /**
  * Poll for video generation completion
+ * Max attempts: 120 (10 minutes with 5s interval)
  */
 async function pollVideoStatus(
 	jobId: string,
 	apiKey: string,
-	maxAttempts = 40,
+	maxAttempts = 120,
 ): Promise<string> {
 	for (let attempt = 0; attempt < maxAttempts; attempt++) {
 		await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
 
 		const statusResponse = await fetch(
-			`https://api.evolink.ai/v1/videos/generations/${jobId}`,
+			`https://api.evolink.ai/v1/tasks/${jobId}`,
 			{
+				method: 'GET',
 				headers: {
 					Authorization: `Bearer ${apiKey}`,
 				},
@@ -64,13 +74,48 @@ async function pollVideoStatus(
 		);
 
 		if (!statusResponse.ok) {
-			throw new Error('Failed to check video generation status');
+			const errorText = await statusResponse.text();
+			console.error('Status check failed:', {
+				status: statusResponse.status,
+				statusText: statusResponse.statusText,
+				body: errorText,
+			});
+			throw new Error(
+				`Failed to check video generation status: ${statusResponse.status} - ${errorText}`,
+			);
 		}
 
 		const statusData = (await statusResponse.json()) as EvolinkVideoResponse;
 
-		if (statusData.status === 'completed' && statusData.video_url) {
-			return statusData.video_url;
+		// Log full response for debugging
+		if (attempt === 0 || statusData.status === 'completed') {
+			console.log('Video status response:', JSON.stringify(statusData, null, 2));
+		}
+
+		console.log('Video status:', {
+			attempt,
+			jobId,
+			status: statusData.status,
+			hasVideoUrl: !!statusData.video_url,
+			hasOutput: !!statusData.output,
+			hasResult: !!statusData.result,
+		});
+
+		if (statusData.status === 'completed') {
+			// Try multiple possible fields for the video URL (prioritize 'results' array)
+			const videoUrl =
+				(statusData.results && statusData.results.length > 0 ? statusData.results[0] : undefined) ||
+				statusData.video_url ||
+				statusData.result?.video_url ||
+				statusData.result?.output ||
+				(typeof statusData.output === 'string' ? statusData.output : undefined) ||
+				(Array.isArray(statusData.output) ? statusData.output[0] : undefined);
+
+			if (videoUrl) {
+				return videoUrl;
+			}
+			// If status is completed but no video URL found, log full response and continue
+			console.warn('Video marked as completed but no video URL found in response:', statusData);
 		}
 
 		if (statusData.status === 'failed') {
@@ -151,12 +196,16 @@ export async function POST(req: NextRequest) {
 				return response.json() as Promise<EvolinkVideoResponse>;
 			})
 			.then(async (data) => {
-				// Check if response contains video URL directly
-				if (data.video_url) {
+				// Check if response contains video URL directly (prioritize 'results' array)
+				const directVideoUrl =
+					(data.results && data.results.length > 0 ? data.results[0] : undefined) ||
+					data.video_url;
+
+				if (directVideoUrl) {
 					console.log(
 						`Video generation completed [requestId=${requestId}, elapsed=${((performance.now() - startTime) / 1000).toFixed(1)}s]`,
 					);
-					return data.video_url;
+					return directVideoUrl;
 				}
 
 				// If we get a job ID, poll for completion

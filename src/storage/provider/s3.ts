@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import { s3mini } from 's3mini';
-import { storageConfig } from '../config/storage-config';
+import { getStorageConfig } from '../config/storage-config';
 import {
   ConfigurationError,
   type StorageConfig,
@@ -23,11 +23,21 @@ import {
  * https://developers.cloudflare.com/r2/
  */
 export class S3Provider implements StorageProvider {
-  private config: StorageConfig;
+  private config: StorageConfig | null = null;
   private s3Client: s3mini | null = null;
 
-  constructor(config: StorageConfig = storageConfig) {
-    this.config = config;
+  constructor(config?: StorageConfig) {
+    this.config = config || null;
+  }
+
+  /**
+   * Get the storage configuration, loading it at runtime if not provided
+   */
+  private getConfig(): StorageConfig {
+    if (!this.config) {
+      this.config = getStorageConfig();
+    }
+    return this.config;
   }
 
   /**
@@ -46,7 +56,7 @@ export class S3Provider implements StorageProvider {
     }
 
     const { region, endpoint, accessKeyId, secretAccessKey, bucketName } =
-      this.config;
+      this.getConfig();
 
     if (!region) {
       throw new ConfigurationError('Storage region is not configured');
@@ -94,7 +104,7 @@ export class S3Provider implements StorageProvider {
     try {
       const { file, filename, contentType, folder } = params;
       const s3 = this.getS3Client();
-      const { bucketName } = this.config;
+      const { bucketName } = this.getConfig();
 
       const uniqueFilename = this.generateUniqueFilename(filename);
       const key = folder ? `${folder}/${uniqueFilename}` : uniqueFilename;
@@ -115,7 +125,8 @@ export class S3Provider implements StorageProvider {
       }
 
       // Generate the URL
-      const { publicUrl } = this.config;
+      const config = this.getConfig();
+      const { publicUrl } = config;
       let url: string;
 
       if (publicUrl) {
@@ -125,7 +136,7 @@ export class S3Provider implements StorageProvider {
       } else {
         // For s3mini, we construct the URL manually
         // Since bucket is included in endpoint, we just append the key
-        const baseUrl = this.config.endpoint?.replace(/\/$/, '') || '';
+        const baseUrl = config.endpoint?.replace(/\/$/, '') || '';
         url = `${baseUrl}/${key}`;
         console.log('uploadFile, constructed url', url);
       }

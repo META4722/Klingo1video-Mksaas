@@ -31,6 +31,7 @@ export const auth = betterAuth({
     'https://klingo1video.io',
     'https://www.klingo1video.io',
     'http://localhost:3000',
+    'http://localhost:3002',
   ],
   database: drizzleAdapter(await getDb(), {
     provider: 'pg', // or "mysql", "sqlite"
