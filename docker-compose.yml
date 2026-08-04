@@ -1,0 +1,18 @@
+services:
+  app:
+    image: ghcr.io/meta4722/klingo1video-mksaas:latest
+    restart: unless-stopped
+    ports:
+      - "3005:3000"
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.klingo1video.rule=Host(`klingo1video.io`) || Host(`www.klingo1video.io`)"
+      - "traefik.http.routers.klingo1video.entrypoints=websecure"
+      - "traefik.http.routers.klingo1video.tls.certresolver=letsencrypt"
+      - "traefik.http.services.klingo1video.loadbalancer.server.port=3000"
+      - "traefik.http.routers.klingo1video.middlewares=klingo1video-www-redirect"
+      - "traefik.http.middlewares.klingo1video-www-redirect.redirectregex.regex=^https://www\\.klingo1video\\.io/(.*)"
+      - "traefik.http.middlewares.klingo1video-www-redirect.redirectregex.replacement=https://klingo1video.io/$${1}"
+      - "traefik.http.middlewares.klingo1video-www-redirect.redirectregex.permanent=true"

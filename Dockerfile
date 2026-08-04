@@ -12,7 +12,7 @@ COPY package.json pnpm-lock.yaml* ./
 # Copy config files needed for fumadocs-mdx postinstall
 COPY source.config.ts ./
 COPY content ./content
-RUN npm install -g pnpm && pnpm i --frozen-lockfile
+RUN npm install -g pnpm@9 && pnpm i --frozen-lockfile --ignore-scripts
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -20,13 +20,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
-# ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_PUBLIC_BASE_URL=https://klingo1video.io
 
-RUN npm install -g pnpm \
-  && DOCKER_BUILD=true pnpm build
+RUN npm install -g pnpm@9 && pnpm run content && DOCKER_BUILD=true pnpm build
 
 # Production image, copy all the files and run next
 FROM base AS runner
